@@ -13,7 +13,7 @@ import './styles/index.less';
 // const baseRouterName = env === 'site' ? '/starter/react/' : '';
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const root = document.getElementById('app');
+const root = document.getElementById('app')!;
 
 const renderApp = () => {
   ReactDOM.createRoot(root).render(
