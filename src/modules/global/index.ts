@@ -1,13 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from 'modules/store';
 
 const namespace = 'global';
 
 export interface IGlobalState {
   loading: boolean;
+  version: string;
+  layout: 'layout1';
+  collapsed: boolean; //菜单展开或闭合
 }
 
 const initialState: IGlobalState = {
   loading: true,
+  version: '0.0.1',
+  layout: 'layout1',
+  collapsed: window.innerWidth < 1000, //宽度小于1000菜单闭合
 };
 
 // createSlice 是 Redux Toolkit 中的一个函数，用于快速创建 Redux reducer 和相关的 action creators。
@@ -18,6 +25,8 @@ const globalSlice = createSlice({
   initialState,
   reducers: {},
 });
+
+export const selectGlobal = (state: RootState) => state.global;
 
 // 通过解构赋值将这些 action creators 单独导出。
 // export const {} = globalSlice.actions;
