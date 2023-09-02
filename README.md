@@ -14,7 +14,8 @@
   </a>
 </p>
 
-English | [简体中文](./README-zh_CN.md) 
+English | [简体中文](./README-zh_CN.md)
+
 ### Introduction
 
 TDesign React Starter is a TDesign-based project developed with `React`, `Vite`. It can be customized theme configuration, and aims to provide project out-of-the-box, configuration-style middle and background projects.
@@ -39,7 +40,7 @@ TDesign React Starter is a TDesign-based project developed with `React`, `Vite`.
 
 ### Usage
 
-> Initialize project with our CLI tool `tdesign-starter-cli` 
+> Initialize project with our CLI tool `tdesign-starter-cli`
 
 ```bash
 ## install tdesign-starter-cli
@@ -53,22 +54,21 @@ td-starter init
 
 ```bash
 ## install dependencies
-npm install
+yarn
 
 ## set up
-npm run dev
+yarn dev
 ```
 
 ### Build
 
 ```bash
 ## build
-npm run build
+yarn build
 
 ## build for test
-npm run build:test
+yarn build:test
 ```
-
 
 ### Contributing Guide
 
