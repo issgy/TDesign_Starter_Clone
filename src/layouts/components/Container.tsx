@@ -1,11 +1,11 @@
 import React from 'react';
 import { Layout } from 'tdesign-react';
-import Menu from './Menu';
-import Header from './Header';
-import Content from './Content';
-import Footer from './Footer';
+import Menu from './Menu/Menu';
+import Header from './Header/Header';
+import Content from './Content/Content';
+import Footer from './Footer/Footer';
 
-import Style from './Content.module.less';
+import Style from './Content/Content.module.less';
 
 // 布局1
 export const Layout1 = React.memo(() => (

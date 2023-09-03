@@ -11,7 +11,7 @@ export interface IGlobalState {
 }
 
 const initialState: IGlobalState = {
-  loading: true,
+  loading: false,
   version: '0.0.1',
   layout: 'layout1',
   collapsed: window.innerWidth < 1000, // 宽度小于1000菜单闭合
