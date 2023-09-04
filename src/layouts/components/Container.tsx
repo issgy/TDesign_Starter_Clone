@@ -11,7 +11,7 @@ import Style from './Content/Content.module.less';
 export const Layout1 = React.memo(() => (
   <Layout className={Style.layout1Panel}>
     {/* 左侧菜单 */}
-    <Menu />
+    <Menu showLogo showOperation theme='dark' />
     {/* 右侧展示页 */}
     <Layout className={Style.layout1Container}>
       <Header />

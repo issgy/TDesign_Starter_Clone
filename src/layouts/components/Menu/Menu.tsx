@@ -18,6 +18,7 @@ interface IMenuProps {
 
 const renderMenuItems = (menu: IMenuItem[]) =>
   menu.map((item) => {
+    //react router v5或更早用useHistory。useNavigate()是一个函数，而useHistory是一个对象
     const navigate = useNavigate();
     const { key, label, Icon, children, path } = item;
     //   没有子菜单 or 有子菜单但长度为0
@@ -45,7 +46,8 @@ const renderMenuItems = (menu: IMenuItem[]) =>
   });
 
 export default memo((props: IMenuProps) => {
-  console.log(props);
+  const location = useLocation();
+  console.log(location);
   const globalState = useAppSelector(selectGlobal);
   const bottomText = globalState.collapsed ? globalState.version : `TDesign Starter ${globalState.version}`;
   const Logo = globalState.collapsed ? <MenuLogoMini /> : <MenuLogo />;
@@ -53,6 +55,7 @@ export default memo((props: IMenuProps) => {
   return (
     <Menu
       width='232px'
+      value={location.pathname}
       style={{ flexShrink: 0, height: '100%' }}
       collapsed={globalState.collapsed}
       theme={props.theme}
