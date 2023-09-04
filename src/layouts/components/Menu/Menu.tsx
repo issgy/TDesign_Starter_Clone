@@ -18,7 +18,7 @@ interface IMenuProps {
 
 const renderMenuItems = (menu: IMenuItem[]) =>
   menu.map((item) => {
-    //react router v5或更早用useHistory。useNavigate()是一个函数，而useHistory是一个对象
+    // react router v5或更早用useHistory。useNavigate()是一个函数，而useHistory是一个对象
     const navigate = useNavigate();
     const { key, label, Icon, children, path } = item;
     //   没有子菜单 or 有子菜单但长度为0
