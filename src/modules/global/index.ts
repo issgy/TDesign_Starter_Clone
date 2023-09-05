@@ -23,13 +23,21 @@ const initialState: IGlobalState = {
 const globalSlice = createSlice({
   name: namespace,
   initialState,
-  reducers: {},
+  reducers: {
+    toggleMenu: (state, action) => {
+      if (action.payload === null) {
+        state.collapsed = !state.collapsed;
+      } else {
+        state.collapsed = !!state.collapsed;
+      }
+    },
+  },
 });
 
 export const selectGlobal = (state: RootState) => state.global;
 
 // 通过解构赋值将这些 action creators 单独导出。
-// export const {} = globalSlice.actions;
+export const { toggleMenu } = globalSlice.actions;
 
 // 同时，还会通过 export default 导出生成的 reducer 函数。
 export default globalSlice.reducer;

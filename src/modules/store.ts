@@ -18,7 +18,7 @@ const store = configureStore({
 // 都是使用typeof store.<method>来创建的类型别名
 // RootState表示整个Redux Store的状态类型
 export type RootState = ReturnType<typeof store.getState>;
-// AppDispatch表示Redux Storededispatch方法的类型
+// AppDispatch表示Redux Store的dispatch方法的类型
 export type AppDispatch = typeof store.dispatch;
 
 // 都是自定义的hook

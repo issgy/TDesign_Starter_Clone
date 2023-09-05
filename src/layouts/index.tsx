@@ -1,4 +1,4 @@
-import React, { Component, memo } from 'react';
+import React, { memo } from 'react';
 import { useAppSelector } from 'modules/store';
 import { selectGlobal } from 'modules/global';
 import { Layout } from 'tdesign-react';
