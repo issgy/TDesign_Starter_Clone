@@ -22,6 +22,7 @@ export default memo(() => {
     },
   ];
   const clickHandler = (params: any) => {
+    //点击个人中心，地址栏和左侧菜单栏都变化
     if (params.value === 1) {
       navigate('/user/index');
     }

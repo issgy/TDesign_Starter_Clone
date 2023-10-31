@@ -12,10 +12,13 @@ export const Layout1 = React.memo(() => (
   <Layout className={Style.layout1Panel}>
     {/* 左侧菜单 */}
     <Menu showLogo showOperation theme='dark' />
-    {/* 右侧展示页 */}
+    {/* 右侧 */}
     <Layout className={Style.layout1Container}>
+      {/* 头部 */}
       <Header />
+      {/* 内容 */}
       <Content />
+      {/* 尾部 */}
       <Footer />
     </Layout>
   </Layout>

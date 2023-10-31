@@ -37,7 +37,7 @@ const renderMenuItems = (menu: IMenuItem[]) =>
       );
     }
 
-    // 有子菜单且长度不为0
+    // 有子菜单且长度不为0，自己调用自己
     return (
       <SubMenu key={key} value={key} title={label} icon={Icon ? <Icon /> : undefined}>
         {renderMenuItems(children)}
