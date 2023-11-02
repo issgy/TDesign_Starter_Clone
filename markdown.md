@@ -19,3 +19,8 @@ const navigate = useNavigate()
 //跳转新路径 navigate('路径')
 
 1、完成 DashBoard 的 TopPanel 部分
+
+## 11.2
+
+1、使用组件库的 DateRangePicker 组件以及轻量级 JS 日期库 dayjs 封装一个日期选择器
+2、使用 ReactEcharts 组件完成折线图的展示

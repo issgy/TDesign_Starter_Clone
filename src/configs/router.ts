@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouterProps } from 'react-router-dom';
 import DashboardBase from '../pages/Dashboard/Base/index';
 
-//路由项的接口类型
+// 路由项的接口类型
 interface IRouteItem {
   key?: string;
   path: string;
@@ -17,4 +17,8 @@ export const routes: IRouteItem[] = [
     Component: DashboardBase,
     isHome: true,
   },
+  // {
+  //     path: 'dashboard/detail',
+  //     Component:DashboardDetail,
+  // }
 ];

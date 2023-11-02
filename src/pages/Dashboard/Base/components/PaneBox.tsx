@@ -1,9 +1,9 @@
 import React from 'react';
 import { Icon } from 'tdesign-icons-react';
 import ReactEcharts from 'echarts-for-react';
-import { DashboardPanel } from '../constant';
+import { DashboardPanel, MICRO_CHART_OPTIONS_LINE, MICRO_CHART_OPTIONS_BAR } from '../constant';
 import classnames from 'classnames';
-import Trend from '../common/Trend';
+import Trend from '../../common/Trend';
 // import useDynamicChart from '../../../../utils/hooks/useDynamicCharts';
 
 import Style from '../index.module.less';
@@ -16,26 +16,24 @@ interface IPros extends React.HTMLAttributes<HTMLElement> {
 
 const asideList: Array<JSX.Element | (() => JSX.Element)> = [
   <div key='dashboard-line-chart' className={Style.paneLineChart}>
-    {/* <ReactEcharts
+    <ReactEcharts
       option={MICRO_CHART_OPTIONS_LINE} // option：图表配置项
       notMerge={true}
       lazyUpdate={true}
       style={{ height: 56 }}
-    /> */}
+    />
   </div>,
-  () => {
+  () => (
     // const dynamicChartOption = useDynamicChart(MICRO_CHART_OPTIONS_BAR);
-    return (
-      <div key='dashboard-bar-chart' className={Style.paneBarChart}>
-        {/* <ReactEcharts
-            option={dynamicChartOption} // option：图表配置项
-          notMerge={true}
-          lazyUpdate={true}
-          style={{ height: 36 }}
-        /> */}
-      </div>
-    );
-  },
+    <div key='dashboard-bar-chart' className={Style.paneBarChart}>
+      <ReactEcharts
+        option={MICRO_CHART_OPTIONS_BAR} // option：图表配置项
+        notMerge={true}
+        lazyUpdate={true}
+        style={{ height: 36 }}
+      />
+    </div>
+  ),
   <div key='dashboard-user-icon' className={Style.iconWrap}>
     <Icon name='usergroup' className={Style.svgIcon} />
   </div>,

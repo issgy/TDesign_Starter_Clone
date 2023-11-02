@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'tdesign-react';
 import { PANE_LIST } from '../constant';
-import Board from '../common/Board';
+import Board from '../../common/Board';
 import PaneBox from './PaneBox';
 
 const gutter = [16, 16];
