@@ -1,8 +1,9 @@
 import React, { memo } from 'react';
-import { Layout } from 'tdesign-react';
+import { Layout, Row } from 'tdesign-react';
 
+const { Footer } = Layout;
 export default memo(() => (
-  <Layout>
-    <div>这是尾部</div>
-  </Layout>
+  <Footer>
+    <Row justify='center'>Copyright @ 2022-2022 Tencent. All Rights Reserved</Row>
+  </Footer>
 ));

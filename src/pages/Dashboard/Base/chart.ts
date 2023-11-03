@@ -1,5 +1,6 @@
 import type { EChartOption } from 'echarts';
 import getChartDataSet from '../common/chart';
+import { CHART_LIST_COLOR } from '../common/constant';
 
 // 折线图
 const getLineChartOptions = (dateTime: Array<string> = []): EChartOption => {
@@ -66,4 +67,134 @@ const getLineChartOptions = (dateTime: Array<string> = []): EChartOption => {
   };
 };
 
-export { getLineChartOptions };
+//  饼图
+const getPieChartsOptions = (radius = 42): EChartOption => ({
+  tooltip: {
+    trigger: 'item',
+  },
+  grid: {
+    top: '0',
+    right: '0',
+  },
+  legend: {
+    itemWidth: 12,
+    itemHeight: 4,
+    textStyle: {
+      fontSize: 12,
+    },
+    left: 'center',
+    bottom: '0',
+    orient: 'horizontal', // legend 横向布局。
+  },
+  series: [
+    {
+      name: '销售渠道',
+      type: 'pie',
+      radius: ['48%', '60%'],
+      avoidLabelOverlap: false,
+      label: {
+        show: true,
+        position: 'center',
+        formatter: ['{value|{d}%}', '{name|{b}渠道占比}'].join('\n'),
+        rich: {
+          value: {
+            fontSize: 28,
+            fontWeight: 'normal',
+            lineHeight: 46,
+          },
+          name: {
+            color: '#909399',
+            fontSize: 12,
+            lineHeight: 14,
+          },
+        },
+      },
+      emphasis: {
+        label: {
+          show: true,
+          formatter: ['{value|{d}%}', '{name|{b}渠道占比}'].join('\n'),
+          rich: {
+            value: {
+              fontSize: 28,
+              fontWeight: 'normal',
+              lineHeight: 46,
+            },
+            name: {
+              color: '#909399',
+              fontSize: 12,
+              lineHeight: 14,
+            },
+          },
+        },
+      },
+      labelLine: {
+        show: false,
+      },
+      data: [
+        { value: 1048, name: '线上' },
+        { value: radius * 7, name: '门店' },
+      ],
+    },
+  ],
+});
+
+// 柱状图
+const getBarChartOptions = (dateTime: Array<string> = []): EChartOption => {
+  const [timeArray, inArray, outArray] = getChartDataSet(dateTime);
+  return {
+    color: CHART_LIST_COLOR,
+    tooltip: {
+      trigger: 'item',
+    },
+    xAxis: {
+      type: 'category',
+      data: timeArray,
+      axisLine: {
+        lineStyle: {
+          color: CHART_LIST_COLOR[1],
+          width: 2,
+        },
+      },
+    },
+    yAxis: {
+      type: 'value',
+    },
+    grid: {
+      top: '5%',
+      left: '25',
+      right: 0,
+      bottom: '60',
+    },
+    legend: {
+      left: 'center',
+      bottom: '0',
+      orient: 'horizontal',
+      data: ['本月', '上月'],
+      icon: 'rect',
+      itemWidth: 12,
+      itemHeight: 4,
+      itemGap: 48,
+      textStyle: {
+        fontSize: 12,
+        color: 'rgba(0,0,0,0.6)',
+      },
+    },
+    series: [
+      {
+        name: '本月',
+        data: outArray,
+        type: 'bar',
+      },
+      {
+        name: '上月',
+        data: inArray,
+        type: 'bar',
+        itemStyle: {
+          color: CHART_LIST_COLOR[1],
+        },
+      },
+    ],
+  };
+};
+
+export { getLineChartOptions, getPieChartsOptions, getBarChartOptions };

@@ -24,3 +24,8 @@ const navigate = useNavigate()
 
 1、使用组件库的 DateRangePicker 组件以及轻量级 JS 日期库 dayjs 封装一个日期选择器
 2、使用 ReactEcharts 组件完成折线图的展示
+
+## 11.2
+
+1、完成销售订单排名和采购订单排名的表格展示
+2、完成了出库概览的展示
