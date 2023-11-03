@@ -4,6 +4,7 @@
   border-radius: 3px;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 .boardContainer_compact {
   padding: 16px 16px 0;
