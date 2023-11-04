@@ -33,3 +33,4 @@ const getChartDataSet = (dateTime: Array<string> = [], divideNum = 10): ChartVal
 };
 
 export default getChartDataSet;
+export { getTimeArray, getRandomIntNumber };

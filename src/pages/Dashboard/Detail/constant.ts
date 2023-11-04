@@ -39,4 +39,22 @@ const PANE_LIST: DashboardPanel[] = [
   },
 ];
 
+interface IProduct {
+  description: string;
+  index: number;
+  isSetup: boolean;
+  name: string;
+  type: number;
+}
+
+const PRODUCT: IProduct = {
+  description: 'SSL证书又叫服务器证书，腾讯云为您提供证书的一站式服务，包括免费、付费证书的申请、管理及部',
+  index: 1,
+  isSetup: true,
+  name: 'SSL证书',
+  type: 3,
+};
+
 export default PANE_LIST;
+export { PRODUCT };
+export type { IProduct };
