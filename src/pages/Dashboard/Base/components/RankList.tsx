@@ -1,9 +1,9 @@
 import React from 'react';
 import Board from 'pages/Dashboard/common/Board';
 import classnames from 'classnames';
-import { Row, Col, Radio, Table } from 'tdesign-react';
+import { Row, Col, Radio, Table, TdPrimaryTableProps } from 'tdesign-react';
 import { SALE_COLUMNS, SALE_TREND_LIST, PURCHASE_COLUMNS, PURCHASE_TREND_LIST } from '../constant';
-import { TdPrimaryTableProps } from 'tdesign-react';
+
 import Trend from '../../common/Trend';
 
 import Style from '../index.module.less';
