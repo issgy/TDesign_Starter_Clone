@@ -4,6 +4,7 @@ import DashboardBase from '../pages/Dashboard/Base/index';
 import DashboardDetail from '../pages/Dashboard/Detail';
 import ListBase from '../pages/List/Base';
 import ListSelect from '../pages/List/Select';
+import ListTree from '../pages/List/Tree';
 
 // 路由项的接口类型
 interface IRouteItem {
@@ -31,5 +32,9 @@ export const routes: IRouteItem[] = [
   {
     path: 'list/select',
     Component: ListSelect,
+  },
+  {
+    path: 'list/tree',
+    Component: ListTree,
   },
 ];
