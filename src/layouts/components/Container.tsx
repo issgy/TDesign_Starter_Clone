@@ -4,22 +4,29 @@ import Menu from './Menu/Menu';
 import Header from './Header/Header';
 import Content from './Content/Content';
 import Footer from './Footer/Footer';
+import { TTheme } from 'modules/global';
 
 import Style from './Content/Content.module.less';
 
+interface ILayoutProps {
+  theme?: TTheme;
+  showHeader?: boolean;
+  fixHeader?: boolean;
+  showFooter?: boolean;
+}
 // 布局1
-export const Layout1 = React.memo(() => (
+export const Layout1 = React.memo((props: ILayoutProps) => (
   <Layout className={Style.layout1Panel}>
     {/* 左侧菜单 */}
     <Menu showLogo showOperation theme='dark' />
     {/* 右侧 */}
     <Layout className={Style.layout1Container}>
       {/* 头部 */}
-      <Header />
+      <>{props.showHeader && <Header theme={props.theme} />}</>
       {/* 内容 */}
       <Content />
       {/* 尾部 */}
-      <Footer />
+      <>{props.showFooter && <Footer />}</>
     </Layout>
   </Layout>
 ));

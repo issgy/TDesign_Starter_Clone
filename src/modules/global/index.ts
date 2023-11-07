@@ -3,12 +3,19 @@ import { RootState } from 'modules/store';
 
 const namespace = 'global';
 
+export type TTheme = 'light' | 'dark';
+
 export interface IGlobalState {
   loading: boolean;
   version: string;
-  layout: 'layout1';
+  layout: 'layout1' | 'layout2' | 'layout3';
   collapsed: boolean; // 菜单展开或闭合
   color: string;
+  setting: boolean;
+  theme: TTheme;
+  showHeader: boolean;
+  fixedHeader: boolean;
+  showFooter: boolean;
 }
 
 const initialState: IGlobalState = {
@@ -17,6 +24,11 @@ const initialState: IGlobalState = {
   layout: 'layout1',
   collapsed: window.innerWidth < 1000, // 宽度小于1000菜单闭合
   color: '#0052D9',
+  setting: false,
+  theme: 'light',
+  showHeader: true,
+  fixedHeader: false,
+  showFooter: true,
 };
 
 // createSlice 是 Redux Toolkit 中的一个函数，用于快速创建 Redux reducer 和相关的 action creators。
@@ -33,13 +45,51 @@ const globalSlice = createSlice({
         state.collapsed = !!state.collapsed;
       }
     },
+    toggleSetting: (state) => {
+      state.setting = !state.setting;
+    },
+    switchTheme: (state, action) => {
+      if (action?.payload) {
+        state.theme = action?.payload;
+        document.documentElement.setAttribute('theme-mode', action?.payload);
+      }
+    },
+    switchColor: (state, action) => {
+      if (action?.payload) {
+        state.color = action?.payload;
+        document.documentElement.style.setProperty('--td-brand-color', action?.payload);
+      }
+    },
+    switchLayout: (state, action) => {
+      if (action?.payload) {
+        state.layout = action?.payload;
+      }
+    },
+    toggleShowHeader: (state) => {
+      state.showHeader = !state.showHeader;
+    },
+    toggleFixedHeader: (state) => {
+      state.fixedHeader = !state.fixedHeader;
+    },
+    toggleShowFooter: (state) => {
+      state.showFooter = !state.showFooter;
+    },
   },
 });
 
 export const selectGlobal = (state: RootState) => state.global;
 
 // 通过解构赋值将这些 action creators 单独导出。
-export const { toggleMenu } = globalSlice.actions;
+export const {
+  toggleMenu,
+  toggleSetting,
+  switchTheme,
+  switchColor,
+  switchLayout,
+  toggleShowHeader,
+  toggleFixedHeader,
+  toggleShowFooter,
+} = globalSlice.actions;
 
 // 同时，还会通过 export default 导出生成的 reducer 函数。
 export default globalSlice.reducer;

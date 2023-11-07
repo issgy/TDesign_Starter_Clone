@@ -2,8 +2,11 @@ import React, { memo } from 'react';
 import { Row, Col, Badge, Button, Popup, Dropdown } from 'tdesign-react';
 import { MailIcon, LogoGithubIcon, HelpCircleIcon, Icon, SettingIcon } from 'tdesign-icons-react';
 import { useNavigate } from 'react-router-dom';
+import { toggleSetting } from 'modules/global';
+import { useAppDispatch } from 'modules/store';
 
 export default memo(() => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const gotoGitHub = () => {
     window.open('https://github.com/Tencent');
@@ -62,7 +65,7 @@ export default memo(() => {
         </Dropdown>
       </Col>
       <Col>
-        <Button shape='square' size='large' variant='text' onClick={() => console.log('toggleSetting')}>
+        <Button shape='square' size='large' variant='text' onClick={() => dispatch(toggleSetting())}>
           <Popup content='页面设置' placement='bottom' showArrow destroyOnClose>
             <SettingIcon />
           </Popup>
