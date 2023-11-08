@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from 'modules/store';
+import { TColorToken, TColorSeries, COLOR_TOKEN, LIGHT_CHART_COLORS } from '../../configs/color';
 
 const namespace = 'global';
 
@@ -15,7 +16,10 @@ export interface IGlobalState {
   theme: TTheme;
   showHeader: boolean;
   fixedHeader: boolean;
+  showBreadcrumbs: boolean;
   showFooter: boolean;
+  colorList: TColorSeries;
+  chartColors: TColorToken;
 }
 
 const initialState: IGlobalState = {
@@ -28,7 +32,10 @@ const initialState: IGlobalState = {
   theme: 'light',
   showHeader: true,
   fixedHeader: false,
+  showBreadcrumbs: false,
   showFooter: true,
+  colorList: COLOR_TOKEN,
+  chartColors: LIGHT_CHART_COLORS,
 };
 
 // createSlice 是 Redux Toolkit 中的一个函数，用于快速创建 Redux reducer 和相关的 action creators。
@@ -74,6 +81,14 @@ const globalSlice = createSlice({
     toggleShowFooter: (state) => {
       state.showFooter = !state.showFooter;
     },
+    toggleShowBreadcrumbs: (state) => {
+      state.showBreadcrumbs = !state.showBreadcrumbs;
+    },
+    switchChartColor: (state, action) => {
+      if (action?.payload) {
+        state.chartColors = action?.payload;
+      }
+    },
   },
 });
 
@@ -89,6 +104,8 @@ export const {
   toggleShowHeader,
   toggleFixedHeader,
   toggleShowFooter,
+  toggleShowBreadcrumbs,
+  switchChartColor,
 } = globalSlice.actions;
 
 // 同时，还会通过 export default 导出生成的 reducer 函数。

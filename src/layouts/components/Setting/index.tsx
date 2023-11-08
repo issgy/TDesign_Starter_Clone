@@ -12,6 +12,8 @@ import {
   toggleShowHeader,
   toggleFixedHeader,
   toggleShowFooter,
+  toggleShowBreadcrumbs,
+  switchChartColor,
 } from 'modules/global/index';
 
 import Style from './index.module.less';
@@ -93,7 +95,7 @@ export default React.memo(() => {
           <div className={Style.settingSubTitle}>显示 Breadcrumbs</div>
         </Col>
         <Col>
-          <Switch size='large' value={globalState.showFooter} onChange={() => dispatch(toggleShowFooter())} />
+          <Switch size='large' value={globalState.showBreadcrumbs} onChange={() => dispatch(toggleShowBreadcrumbs())} />
         </Col>
       </Row>
       <Row justify='space-between'>
