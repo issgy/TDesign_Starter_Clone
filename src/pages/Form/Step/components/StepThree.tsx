@@ -47,9 +47,9 @@ export default React.memo((props: { current: number; steps: any[]; callback: Fun
         rules={[{ required: true, type: 'error', message: '请输入收货人' }]}
       >
         <Select placeholder='请选择收货地址' value='A'>
-          {addressOptions.map((address) => {
-            return <Option label={address.label} key={address.value} value={address.value}></Option>;
-          })}
+          {addressOptions.map((address) => (
+            <Option label={address.label} key={address.value} value={address.value}></Option>
+          ))}
         </Select>
       </FormItem>
       <FormItem

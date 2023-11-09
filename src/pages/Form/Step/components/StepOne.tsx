@@ -56,9 +56,9 @@ export default React.memo((props: { callback: Function }) => {
           rules={[{ required: true, message: '请选择合同名称', type: 'error' }]}
         >
           <Select placeholder='请选择合同' value='A'>
-            {contracts.map((item) => {
-              return <Option label={item.label} value={item.value} key={item.value}></Option>;
-            })}
+            {contracts.map((item) => (
+              <Option label={item.label} value={item.value} key={item.value}></Option>
+            ))}
           </Select>
         </FormItem>
         <FormItem
@@ -67,9 +67,9 @@ export default React.memo((props: { callback: Function }) => {
           rules={[{ required: true, message: '请选择发票类型', type: 'error' }]}
         >
           <Select placeholder='请选择发票' value='A'>
-            {invoices.map((item) => {
-              return <Option label={item.label} value={item.value} key={item.value}></Option>;
-            })}
+            {invoices.map((item) => (
+              <Option label={item.label} value={item.value} key={item.value}></Option>
+            ))}
           </Select>
         </FormItem>
         <FormItem label='开票金额' name='name'>
