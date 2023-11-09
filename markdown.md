@@ -55,3 +55,4 @@ const navigate = useNavigate()
 ## 11.8
 
 1、完成基础表单页
+2、完成分布表单页

@@ -6,6 +6,7 @@ import ListBase from '../pages/List/Base';
 import ListSelect from '../pages/List/Select';
 import ListTree from '../pages/List/Tree';
 import FromBse from '../pages/Form/Base';
+import FromStep from '../pages/Form/Step';
 
 // 路由项的接口类型
 interface IRouteItem {
@@ -42,8 +43,8 @@ export const routes: IRouteItem[] = [
     path: 'form/base',
     Component: FromBse,
   },
-  // {
-  //   path: 'form/step',
-  //   Component:FromStep
-  // }
+  {
+    path: 'form/step',
+    Component: FromStep,
+  },
 ];
