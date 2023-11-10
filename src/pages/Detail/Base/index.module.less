@@ -1,0 +1,52 @@
+.infoBox {
+    column-count: 2;
+}
+
+.infoBoxItem {
+    padding: 12px 0;
+    color: var(--td-text-color-primary);
+    display: flex;
+    h1 {
+        font-weight: 400;
+        font-size: 14px;
+        color: var(--td-text-color-secondary);
+        margin: 0;
+        line-height: 22px;
+    }
+    span {
+        margin-left: 24px;
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    i {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        margin-right: 5px;
+        border-radius: 50%;
+        background: var(--td-success-color-5);
+    }
+    .inProgress {
+        color: var(--td-success-color-5);
+    }
+    .pdf {
+        color: var(--td-brand-color);
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.logBox {
+    margin-top: 24px;
+}
+
+@media (min-width:992px) {
+    .infoBoxItem {
+        h1 {
+            width: 200px;
+        }
+    }
+}

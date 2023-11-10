@@ -1,0 +1,46 @@
+@card-prefix-cls: ~'td-card';
+
+
+.@{card-prefix-cls} {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    border-radius: 2px;
+    background: var(--td-bg-color-container);
+
+    &.@{card-prefix-cls}-borderd {
+        border: 1px solid var(--td-border-level-2-color);
+    }
+
+    &-head {
+        min-height: 48px;
+        margin-bottom: -1px;
+        padding: 0 24px;
+        border-bottom: 1px solid var(--td-bg-color-secondarycontainer);
+        border-radius: 2px 2px 0 0;
+
+        &-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        &-title {
+            display: inline-block;
+            font-size: 20px;
+            font-weight: 500;
+            padding: 16px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: var(--td-text-color-primary);
+        }
+    }
+
+    
+
+    &-body {
+        padding: 24px;
+        color: var(--td-text-color-primary);
+    }
+}
