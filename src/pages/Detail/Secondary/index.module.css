@@ -1,0 +1,29 @@
+.secondaryNotification {
+  background-color: var(--td-bg-color-container);
+  padding: 24px 32px;
+  border-radius: 3px;
+}
+.secondaryNotification .tabsContent {
+  margin: 0px;
+}
+.secondaryNotification .msgList .listItem {
+  cursor: pointer;
+  padding: 13px 24px 13px 0;
+}
+.secondaryNotification .msgList .content {
+  margin: 0;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--td-text-color-placeholder);
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.secondaryNotification .msgList .content .tag {
+  margin-right: 8px;
+  margin-left: 0;
+}
+.secondaryNotification .info {
+  margin: 20px;
+}

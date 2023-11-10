@@ -8,6 +8,7 @@ import ListTree from '../pages/List/Tree';
 import FromBse from '../pages/Form/Base';
 import FromStep from '../pages/Form/Step';
 import DetailBase from '../pages/Detail/Base';
+import DetailSecondary from '../pages/Detail/Secondary';
 
 // 路由项的接口类型
 interface IRouteItem {
@@ -60,8 +61,8 @@ export const routes: IRouteItem[] = [
   //   path: '/detail/deploy',
   //   Component: DetailDeploy,
   // },
-  // {
-  //   path: '/detail/secondary',
-  //   Component: DetailSecondary,
-  // },
+  {
+    path: '/detail/secondary',
+    Component: DetailSecondary,
+  },
 ];

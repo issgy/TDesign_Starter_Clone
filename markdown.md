@@ -60,3 +60,4 @@ const navigate = useNavigate()
 # 11.9
 
 1、完成基础详情页
+2、完成二级详情页

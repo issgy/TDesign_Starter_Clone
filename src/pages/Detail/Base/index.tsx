@@ -6,6 +6,7 @@ import Card from 'components/Card';
 import { dataInfo, dataStep } from './consts';
 
 import Style from './index.module.less';
+
 const { StepItem } = Steps;
 
 export default React.memo(() => (
