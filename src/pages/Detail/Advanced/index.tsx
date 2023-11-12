@@ -5,13 +5,11 @@ import ProgressCom from './components/Progress';
 import Product from './components/Product';
 import Detail from './components/Detail';
 
-export default React.memo(() => {
-  return (
-    <PageBox withColor={false}>
-      <Base />
-      <ProgressCom />
-      <Product />
-      <Detail />
-    </PageBox>
-  );
-});
+export default React.memo(() => (
+  <PageBox withColor={false}>
+    <Base />
+    <ProgressCom />
+    <Product />
+    <Detail />
+  </PageBox>
+));
