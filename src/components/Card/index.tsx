@@ -11,7 +11,7 @@ export interface CardProps {
   className?: string;
 }
 
-const Card: React.FC = (props: CardProps) => {
+const Card = (props: CardProps) => {
   const { title, children, prefixCls, borded, className } = props;
   const cls = getPrefixCls('card', prefixCls);
 
