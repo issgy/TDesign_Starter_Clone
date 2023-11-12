@@ -5,27 +5,29 @@ import './index.less';
 
 export interface CardProps {
   title?: ReactNode;
+  extra?: ReactNode;
   children?: React.ReactNode;
   borded?: Boolean;
   prefixCls?: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const Card = (props: CardProps) => {
-  const { title, children, prefixCls, borded, className } = props;
+  const { title, extra, children, prefixCls, borded, className, style } = props;
   const cls = getPrefixCls('card', prefixCls);
 
   const borderCls = `${cls}-borderd`;
 
-  const hasHead = Boolean(title);
+  const hasHead = Boolean(title || extra);
 
-  console.log(props);
   return (
-    <div className={cx(cls, className, { [borderCls]: borded })}>
+    <div style={style} className={cx(cls, className, { [borderCls]: borded })}>
       {hasHead && (
         <div className={cx(`${cls}-head`)}>
           <div className={cx(`${cls}-head-wrapper`)}>
             {title && <div className={cx(`${cls}-head-title`)}>{title}</div>}
+            {extra && <div className={cx(`${cls}-head-extra`)}>{extra}</div>}
           </div>
         </div>
       )}

@@ -9,6 +9,7 @@ import FromBse from '../pages/Form/Base';
 import FromStep from '../pages/Form/Step';
 import DetailBase from '../pages/Detail/Base';
 import DetailAdvanced from '../pages/Detail/Advanced';
+import DetailDeploy from '../pages/Detail/Deploy';
 import DetailSecondary from '../pages/Detail/Secondary';
 
 // 路由项的接口类型
@@ -58,10 +59,10 @@ export const routes: IRouteItem[] = [
     path: '/detail/advanced',
     Component: DetailAdvanced,
   },
-  // {
-  //   path: '/detail/deploy',
-  //   Component: DetailDeploy,
-  // },
+  {
+    path: '/detail/deploy',
+    Component: DetailDeploy,
+  },
   {
     path: '/detail/secondary',
     Component: DetailSecondary,

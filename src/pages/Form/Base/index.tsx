@@ -70,7 +70,7 @@ export default React.memo(() => {
                   <Radio value='0'>收款</Radio>
                   <Radio value='1'>付款</Radio>
                 </Radio.Group>
-                <Input placeholder='请输入付款金额' style={{ width: '25%' }} />
+                <Input placeholder='请输入金额' style={{ width: '25%' }} />
               </FormItem>
             </Col>
             <Col span={6}>

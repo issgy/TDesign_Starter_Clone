@@ -93,7 +93,10 @@ const items = [
 const TreeTable: React.FC = () => (
   <PageBox className='table-tree-container'>
     <div className='list-tree-wrapper'>
-      <div className='list-tree-operator' style={{ width: 200, float: 'left', padding: '30px 32px' }}>
+      <div
+        className='list-tree-operator'
+        style={{ width: 200, float: 'left', padding: '30px 32px', boxSizing: 'border-box' }}
+      >
         <Input placeholder='请输入关键词' />
         <Tree data={items} activable hover transition style={{ marginTop: 24 }} />
       </div>

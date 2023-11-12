@@ -76,7 +76,7 @@ export default React.memo((props: { callback: Function }) => {
           <div>--</div>
         </FormItem>
         <FormItem>
-          <Button type='submit' onClick={next}>
+          <Button type='submit' onClick={next} style={{ marginLeft: '100px' }}>
             提交申请
           </Button>
         </FormItem>

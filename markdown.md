@@ -65,3 +65,4 @@ const navigate = useNavigate()
 # 11.12
 
 1、完成多卡片详情页
+2、完成数据详情页

@@ -1,5 +1,3 @@
-import { Color } from 'tvision-color';
-
 // 定义一种嵌套的对象结构，用来表示颜色的系列
 export type TColorToken = Record<string, string>;
 export type TColorSeries = Record<string, TColorToken>;

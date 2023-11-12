@@ -3,6 +3,8 @@ import { RECENT_7_DAYS } from './date';
 
 type ChartValue = number | string;
 
+const CHART_LIST_COLOR = ['#0052D9', '#BCC4D0', '#7D46BD', '#0594FA', '#ED7B2F'];
+
 function getRandomIntNumber(): number {
   const randomNumber = Math.floor(Math.random() * 100) + 1;
   return randomNumber;
@@ -33,4 +35,4 @@ const getChartDataSet = (dateTime: Array<string> = [], divideNum = 10): ChartVal
 };
 
 export default getChartDataSet;
-export { getTimeArray, getRandomIntNumber };
+export { getTimeArray, getRandomIntNumber, CHART_LIST_COLOR };
