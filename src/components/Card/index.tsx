@@ -1,10 +1,9 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import { Tabs } from 'tdesign-react';
+import { Tabs, TabPanelProps } from 'tdesign-react';
 import { getPrefixCls } from './utils';
 import Grid from './Grid';
 import './index.less';
-import { TabPanelProps } from 'tdesign-react';
 import TabPanel from 'tdesign-react/es/tabs/TabPanel';
 
 export interface CardProps {

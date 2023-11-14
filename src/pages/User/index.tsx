@@ -57,7 +57,7 @@ const User = () => (
                 left: '3%',
                 right: '4%',
                 bottom: '3%',
-                containLabel: true, //防止标签溢出
+                containLabel: true, // 防止标签溢出
               },
               toolbox: {
                 feature: {
