@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouterProps } from 'react-router-dom';
 import DashboardBase from '../pages/Dashboard/Base/index';
 import DashboardDetail from '../pages/Dashboard/Detail';
@@ -11,6 +11,7 @@ import DetailBase from '../pages/Detail/Base';
 import DetailAdvanced from '../pages/Detail/Advanced';
 import DetailDeploy from '../pages/Detail/Deploy';
 import DetailSecondary from '../pages/Detail/Secondary';
+import User from '../pages/User';
 
 // 路由项的接口类型
 interface IRouteItem {
@@ -66,5 +67,9 @@ export const routes: IRouteItem[] = [
   {
     path: '/detail/secondary',
     Component: DetailSecondary,
+  },
+  {
+    path: '/user/index',
+    Component: User,
   },
 ];
