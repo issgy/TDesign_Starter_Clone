@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouterProps } from 'react-router-dom';
 import DashboardBase from '../pages/Dashboard/Base/index';
 import DashboardDetail from '../pages/Dashboard/Detail';

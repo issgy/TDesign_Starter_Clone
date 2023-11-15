@@ -46,11 +46,11 @@ const items = [
         children: [
           {
             label: '采购1组',
-            value: '0-1-0',
+            value: '1-1-0',
           },
           {
             label: '采购2组',
-            value: '0-1-1',
+            value: '1-1-1',
           },
         ],
       },
