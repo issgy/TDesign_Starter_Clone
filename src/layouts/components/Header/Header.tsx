@@ -3,8 +3,9 @@ import classNames from 'classnames';
 import { Layout, Row, Col, Input, Button } from 'tdesign-react';
 import { ViewListIcon, SearchIcon } from 'tdesign-icons-react';
 import { useAppDispatch } from 'modules/store';
-import { toggleMenu } from 'modules/global';
+import { toggleMenu, TTheme } from 'modules/global';
 import HeaderRight from './HeaderRight';
+import { HeaderMenu } from '../Menu/Menu';
 
 import Style from './Header.module.less';
 
@@ -13,26 +14,40 @@ const { Header } = Layout;
 interface IHeaderProps {
   fixed?: boolean; // 是否展示Header
   showMenu?: boolean; // 是否展示左侧菜单
-  theme?: string; // 先默认light
+  theme?: TTheme; // 先默认light
 }
 
 export default memo((props: IHeaderProps) => {
   const dispatch = useAppDispatch();
-  const HeaderLeft = (
-    <Row gutter={16} align='middle'>
-      <Col>
-        <Button shape='square' size='large' variant='text' onClick={() => dispatch(toggleMenu(null))}>
-          <ViewListIcon />
-        </Button>
-      </Col>
-      <Col>
-        <Input prefixIcon={<SearchIcon />} placeholder='请输入内容' />
-      </Col>
-    </Row>
-  );
+  let HeaderLeft;
+  if (props.showMenu) {
+    HeaderLeft = <HeaderMenu theme={props.theme} />;
+  } else {
+    HeaderLeft = (
+      <Row gutter={16} align='middle'>
+        <Col style={{ lineHeight: '64px' }}>
+          <Button shape='square' size='large' variant='text' onClick={() => dispatch(toggleMenu(null))}>
+            <ViewListIcon />
+          </Button>
+        </Col>
+        <Col>
+          <Input prefixIcon={<SearchIcon />} placeholder='请输入内容' />
+        </Col>
+      </Row>
+    );
+  }
+
   return (
-    <Header className={classNames(Style.headerPanel)}>
-      <Row justify='space-between' className={Style.rowPanel}>
+    <Header
+      className={classNames(
+        Style.headerPanel,
+        { [Style.headerFixed]: props.fixed },
+        { [Style.headerPanelDark]: props.theme === 'dark' },
+        { [Style.headerPanelLight]: props.theme === 'light' },
+      )}
+      style={{ height: '64px', lineHeight: '64px' }}
+    >
+      <Row justify='space-between'>
         <Col>{HeaderLeft}</Col>
         <Col>
           <HeaderRight />

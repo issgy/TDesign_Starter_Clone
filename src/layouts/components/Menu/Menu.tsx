@@ -1,15 +1,15 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { selectGlobal } from 'modules/global';
 import { useAppSelector } from 'modules/store';
-import { Menu } from 'tdesign-react';
+import { Menu, MenuValue } from 'tdesign-react';
 import { menu, IMenuItem } from 'configs/menu';
 import MenuLogo from './MenuLogo';
 import MenuLogoMini from './MenuLogoMini';
 
 import Style from './Menu.module.less';
 
-const { MenuItem, SubMenu } = Menu;
+const { MenuItem, SubMenu, HeadMenu } = Menu;
 interface IMenuProps {
   showLogo?: boolean;
   theme?: 'light' | 'dark';
@@ -44,6 +44,22 @@ const renderMenuItems = (menu: IMenuItem[]) =>
       </SubMenu>
     );
   });
+
+export const HeaderMenu = memo((props: IMenuProps) => {
+  const location = useLocation();
+  const [active, setActive] = useState<MenuValue>(location.pathname);
+  return (
+    <HeadMenu
+      expandType='popup'
+      style={{ marginBottom: 20 }}
+      theme={props.theme}
+      value={active}
+      onChange={(v) => setActive(v)}
+    >
+      {renderMenuItems(menu)}
+    </HeadMenu>
+  );
+});
 
 export default memo((props: IMenuProps) => {
   const location = useLocation();

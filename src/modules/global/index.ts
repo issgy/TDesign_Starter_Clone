@@ -49,7 +49,7 @@ const globalSlice = createSlice({
       if (action.payload === null) {
         state.collapsed = !state.collapsed;
       } else {
-        state.collapsed = !!state.collapsed;
+        state.collapsed = action.payload;
       }
     },
     toggleSetting: (state) => {

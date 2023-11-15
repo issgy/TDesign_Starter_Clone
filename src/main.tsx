@@ -7,7 +7,7 @@ import App from 'layouts/index';
 
 import 'tdesign-react/es/style/index.css';
 
-// import './styles/index.less';
+import './styles/index.less';
 
 // const env = import.meta.env.MODE || 'development';
 // const baseRouterName = env === 'site' ? '/starter/react/' : '';

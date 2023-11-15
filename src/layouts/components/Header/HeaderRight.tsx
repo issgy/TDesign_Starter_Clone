@@ -32,7 +32,7 @@ export default memo(() => {
   };
   return (
     <Row align='middle' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Col>
+      <Col style={{ lineHeight: '64px' }}>
         <Button shape='square' size='large' variant='text'>
           <Badge count={99}>
             <MailIcon></MailIcon>
