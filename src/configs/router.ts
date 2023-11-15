@@ -12,6 +12,10 @@ import DetailAdvanced from '../pages/Detail/Advanced';
 import DetailDeploy from '../pages/Detail/Deploy';
 import DetailSecondary from '../pages/Detail/Secondary';
 import User from '../pages/User';
+import ResultSuccess from '../pages/Result/Success';
+import ResultFail from '../pages/Result/Fail';
+import ResultNetworkError from '../pages/Result/NetworkError';
+import ResultBrowserIncompatible from '../pages/Result/BrowserIncompatible';
 
 // 路由项的接口类型
 interface IRouteItem {
@@ -71,5 +75,22 @@ export const routes: IRouteItem[] = [
   {
     path: '/user/index',
     Component: User,
+  },
+  {
+    path: '/result/success',
+    Component: ResultSuccess,
+  },
+  {
+    path: '/result/fail',
+    Component: ResultFail,
+  },
+  {
+    path: '/result/network-error',
+    Component: ResultNetworkError,
+  },
+
+  {
+    path: '/result/browser-incompatible',
+    Component: ResultBrowserIncompatible,
   },
 ];
