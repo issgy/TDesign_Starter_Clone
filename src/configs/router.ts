@@ -15,6 +15,9 @@ import User from '../pages/User';
 import ResultSuccess from '../pages/Result/Success';
 import ResultFail from '../pages/Result/Fail';
 import ResultNetworkError from '../pages/Result/NetworkError';
+import Result403 from 'pages/Result/403';
+import Result404 from 'pages/Result/404';
+import Result500 from 'pages/Result/500';
 import ResultBrowserIncompatible from '../pages/Result/BrowserIncompatible';
 
 // 路由项的接口类型
@@ -88,7 +91,18 @@ export const routes: IRouteItem[] = [
     path: '/result/network-error',
     Component: ResultNetworkError,
   },
-
+  {
+    path: '/result/403',
+    Component: Result403,
+  },
+  {
+    path: '/result/404',
+    Component: Result404,
+  },
+  {
+    path: '/result/500',
+    Component: Result500,
+  },
   {
     path: '/result/browser-incompatible',
     Component: ResultBrowserIncompatible,

@@ -35,9 +35,9 @@ const ErrorPage = (props: IErrorProps) => {
   const info = errorInfo[props.code];
   return (
     <div className={Style.errorBox}>
-      <img src={info?.icon} />
-      <div>{info?.title}</div>
-      <div>{info?.desc}</div>
+      <img src={info?.icon} className={Style.icon} />
+      <div className={Style.title}>{info?.title}</div>
+      <div className={Style.description}>{info?.desc}</div>
       <Button theme='primary'>返回首页</Button>
     </div>
   );
