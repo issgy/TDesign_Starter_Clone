@@ -15,7 +15,6 @@ export interface IGlobalState {
   setting: boolean;
   theme: TTheme;
   showHeader: boolean;
-  fixedHeader: boolean;
   showBreadcrumbs: boolean;
   showFooter: boolean;
   colorList: TColorSeries;
@@ -31,7 +30,6 @@ const initialState: IGlobalState = {
   setting: false,
   theme: 'light',
   showHeader: true,
-  fixedHeader: false,
   showBreadcrumbs: false,
   showFooter: true,
   colorList: COLOR_TOKEN,
@@ -75,9 +73,6 @@ const globalSlice = createSlice({
     toggleShowHeader: (state) => {
       state.showHeader = !state.showHeader;
     },
-    toggleFixedHeader: (state) => {
-      state.fixedHeader = !state.fixedHeader;
-    },
     toggleShowFooter: (state) => {
       state.showFooter = !state.showFooter;
     },
@@ -102,7 +97,6 @@ export const {
   switchColor,
   switchLayout,
   toggleShowHeader,
-  toggleFixedHeader,
   toggleShowFooter,
   toggleShowBreadcrumbs,
   switchChartColor,

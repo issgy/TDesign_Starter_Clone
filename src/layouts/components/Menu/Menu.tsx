@@ -62,7 +62,6 @@ export const HeaderMenu = memo((props: IMenuProps) => {
 });
 
 export default memo((props: IMenuProps) => {
-  console.log(props);
   const location = useLocation();
   const globalState = useAppSelector(selectGlobal);
   const bottomText = globalState.collapsed ? globalState.version : `TDesign Starter ${globalState.version}`;

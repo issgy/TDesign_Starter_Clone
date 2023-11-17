@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import classNames from 'classnames';
 import { Layout, Row, Col, Input, Button } from 'tdesign-react';
 import { ViewListIcon, SearchIcon } from 'tdesign-icons-react';
 import { useAppDispatch } from 'modules/store';
@@ -12,7 +11,6 @@ import Style from './Header.module.less';
 const { Header } = Layout;
 
 interface IHeaderProps {
-  fixed?: boolean; // 是否展示Header
   showMenu?: boolean; // 是否展示左侧菜单
   theme?: TTheme; // 先默认light
 }
@@ -38,15 +36,7 @@ export default memo((props: IHeaderProps) => {
   }
 
   return (
-    <Header
-      className={classNames(
-        Style.headerPanel,
-        { [Style.headerFixed]: props.fixed },
-        { [Style.headerPanelDark]: props.theme === 'dark' },
-        { [Style.headerPanelLight]: props.theme === 'light' },
-      )}
-      style={{ height: '64px', lineHeight: '64px' }}
-    >
+    <Header className={Style.headerPanel} style={{ height: '64px', lineHeight: '64px' }}>
       <Row justify='space-between'>
         <Col>{HeaderLeft}</Col>
         <Col>

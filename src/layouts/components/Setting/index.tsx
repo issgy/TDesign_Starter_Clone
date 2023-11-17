@@ -10,7 +10,6 @@ import {
   switchLayout,
   selectGlobal,
   toggleShowHeader,
-  toggleFixedHeader,
   toggleShowFooter,
   toggleShowBreadcrumbs,
   switchChartColor,
@@ -80,14 +79,6 @@ export default React.memo(() => {
         </Col>
         <Col>
           <Switch size='large' value={globalState.showHeader} onChange={() => dispatch(toggleShowHeader())} />
-        </Col>
-      </Row>
-      <Row justify='space-between'>
-        <Col>
-          <div className={Style.settingSubTitle}>固定 Header</div>
-        </Col>
-        <Col>
-          <Switch size='large' value={globalState.fixedHeader} onChange={() => dispatch(toggleFixedHeader())} />
         </Col>
       </Row>
       <Row justify='space-between'>
