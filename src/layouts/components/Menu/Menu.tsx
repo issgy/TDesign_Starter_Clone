@@ -62,10 +62,10 @@ export const HeaderMenu = memo((props: IMenuProps) => {
 });
 
 export default memo((props: IMenuProps) => {
+  console.log(props);
   const location = useLocation();
   const globalState = useAppSelector(selectGlobal);
   const bottomText = globalState.collapsed ? globalState.version : `TDesign Starter ${globalState.version}`;
-  const Logo = globalState.collapsed ? <MenuLogoMini /> : <MenuLogo />;
 
   return (
     <Menu
@@ -75,7 +75,7 @@ export default memo((props: IMenuProps) => {
       collapsed={globalState.collapsed}
       theme={props.theme}
       operations={props.showOperation ? <div className={Style.menuTip}>{bottomText}</div> : undefined}
-      logo={props.showLogo ? Logo : undefined}
+      logo={props.showLogo ? <MenuLogo collapsed={globalState.collapsed} /> : undefined}
     >
       {renderMenuItems(menu)}
     </Menu>

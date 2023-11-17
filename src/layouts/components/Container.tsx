@@ -18,15 +18,15 @@ interface ILayoutProps {
 export const Layout1 = React.memo((props: ILayoutProps) => (
   <Layout className={Style.layout1Panel}>
     {/* 左侧菜单 */}
-    <Menu showLogo showOperation theme='dark' />
+    <Menu showLogo showOperation theme='light' />
     {/* 右侧 */}
     <Layout className={Style.layout1Container}>
       {/* 头部 */}
-      <>{props.showHeader && <Header fixed={props.fixedHeader} theme={props.theme} />}</>
+      {props.showHeader && <Header fixed={props.fixedHeader} theme={props.theme} />}
       {/* 内容 */}
       <Content />
       {/* 尾部 */}
-      <>{props.showFooter && <Footer />}</>
+      {props.showFooter && <Footer />}
     </Layout>
   </Layout>
 ));
@@ -34,21 +34,21 @@ export const Layout1 = React.memo((props: ILayoutProps) => (
 // 布局2
 export const Layout2 = React.memo((props: ILayoutProps) => (
   <Layout className={Style.layout2Panel}>
-    <>{props.showHeader && <Header fixed={props.fixedHeader} theme='dark' showMenu={true} />}</>
+    {props.showHeader && <Header fixed={props.fixedHeader} theme='light' showMenu={true} />}
     <Content />
-    <>{props.showFooter && <Footer />}</>
+    {props.showFooter && <Footer />}
   </Layout>
 ));
 
 // 布局3
 export const Layout3 = React.memo((props: ILayoutProps) => (
   <Layout className={Style.layout3Panel}>
-    <>{props.showHeader && <Header fixed={props.fixedHeader} theme='dark' />}</>
+    {props.showHeader && <Header fixed={props.fixedHeader} theme='light' />}
     <Layout className={Style.layout3Main}>
       <Menu theme={props.theme} />
       <Layout className={Style.layout3Content}>
         <Content />
-        <>{props.showFooter && <Footer />}</>
+        {props.showFooter && <Footer />}
       </Layout>
     </Layout>
   </Layout>

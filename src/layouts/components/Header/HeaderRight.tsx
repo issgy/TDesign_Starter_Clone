@@ -4,6 +4,7 @@ import { MailIcon, LogoGithubIcon, HelpCircleIcon, Icon, SettingIcon } from 'tde
 import { useNavigate } from 'react-router-dom';
 import { toggleSetting } from 'modules/global';
 import { useAppDispatch } from 'modules/store';
+import Style from './Header.module.less';
 
 export default memo(() => {
   const dispatch = useAppDispatch();
@@ -54,7 +55,7 @@ export default memo(() => {
         </Button>
       </Col>
       <Col>
-        <Dropdown options={options} onClick={clickHandler}>
+        <Dropdown className={Style.dropdown} options={options} onClick={clickHandler} trigger={'click'}>
           <Button variant='text'>
             <span style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }}>
               <Icon name='user-circle' size='20' />
