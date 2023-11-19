@@ -1,23 +1,82 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { Row, Col, Table, Button, Input, Tag } from 'tdesign-react';
-import { ChevronUpCircleIcon, SearchIcon } from 'tdesign-icons-react';
+import { ChevronUpCircleIcon, SearchIcon, ChevronDownCircleIcon } from 'tdesign-icons-react';
 import PageBox from 'components/PageBox';
+import { useAppSelector, useAppDispatch } from 'modules/store';
+import { selectListBase, getList, clearPageState } from 'modules/list/base';
 
-const data: any = [];
-const total = 50;
-for (let i = 0; i < total; i++) {
-  data.push({
-    index: i,
-    name: '共有',
-    status: '已完成',
-    code: 'BH0001',
-    type: '收款',
-    department: '财务部',
-    money: '120,000',
-  });
-}
+export const StatusMap: {
+  [key: number]: React.ReactElement;
+} = {
+  1: (
+    <Tag theme='warning' variant='light'>
+      待审核
+    </Tag>
+  ),
+  2: (
+    <Tag theme='warning' variant='light'>
+      待履行
+    </Tag>
+  ),
+  3: (
+    <Tag theme='success' variant='light'>
+      履行中
+    </Tag>
+  ),
+  4: (
+    <Tag theme='success' variant='light'>
+      已完成
+    </Tag>
+  ),
+  5: (
+    <Tag theme='danger' variant='light'>
+      审核失败
+    </Tag>
+  ),
+};
+export const ContractTypeMap: {
+  [key: number]: string;
+} = {
+  0: '审核失败',
+  1: '待审核',
+  2: '待履行',
+};
+export const PaymentTypeMap: {
+  [key: number]: React.ReactElement;
+} = {
+  0: (
+    <>
+      付款
+      <ChevronUpCircleIcon style={{ color: 'red', marginLeft: 4 }} />
+    </>
+  ),
+  1: (
+    <>
+      收款
+      <ChevronDownCircleIcon style={{ color: 'green', marginLeft: 4 }} />
+    </>
+  ),
+};
 export default memo(() => {
-  const [selectedRowKeys, setSelectedRowKeys] = useState<(string | number)[]>([0, 1]);
+  const dispatch = useAppDispatch();
+  const pageState = useAppSelector(selectListBase);
+  const [selectedRowKeys, setSelectedRowKeys] = useState<(string | number)[]>([1, 2]);
+
+  const { loading, contractList, current, pageSize, total } = pageState;
+
+  useEffect(() => {
+    dispatch(
+      getList({
+        pageSize: 10,
+        current: 1,
+      }),
+    );
+    return () => {
+      console.log('clear');
+      dispatch(clearPageState);
+    };
+  }, []);
+
   const onSelectChange = (value: (string | number)[]) => {
     setSelectedRowKeys(value);
   };
@@ -41,36 +100,31 @@ export default memo(() => {
       </Row>
       <Table
         rowKey='index'
-        data={data}
+        data={contractList}
         columns={[
-          { colKey: 'row-select', fixed: 'left', type: 'multiple', width: 50 },
-          { colKey: 'name', title: '合同名称', minWidth: 300, width: 300, align: 'left', ellipsis: true },
           {
+            colKey: 'row-select',
+            fixed: 'left',
+            type: 'multiple',
+            width: 50,
+          },
+          {
+            align: 'left',
+            width: 300,
+            minWidth: 300,
+            ellipsis: true,
+            colKey: 'name',
+            title: '合同名称',
+          },
+          {
+            align: 'left',
+            width: 200,
+            minWidth: 200,
+            ellipsis: true,
             colKey: 'status',
             title: '合同状态',
-            minWidth: 200,
-            width: 200,
-            align: 'left',
-            ellipsis: true,
             cell({ row }) {
-              return <Tag theme='primary'>{row.status}</Tag>;
-            },
-          },
-          { colKey: 'code', title: '合同编号', minWidth: 200, width: 200, align: 'left', ellipsis: true },
-          {
-            colKey: 'type',
-            title: '合同付款类型',
-            minWidth: 200,
-            width: 200,
-            align: 'left',
-            ellipsis: true,
-            cell({ row }) {
-              return (
-                <>
-                  {row.money}
-                  <ChevronUpCircleIcon style={{ color: 'red' }}></ChevronUpCircleIcon>
-                </>
-              );
+              return StatusMap[row.status || 5];
             },
           },
           {
@@ -78,29 +132,51 @@ export default memo(() => {
             width: 200,
             minWidth: 200,
             ellipsis: true,
-            colKey: 'department',
-            title: '申请部门',
+            colKey: 'no',
+            title: '合同编号',
           },
           {
             align: 'left',
             width: 200,
             minWidth: 200,
             ellipsis: true,
-            colKey: 'money',
+            colKey: 'contractType',
+            title: '合同类型',
+            cell({ row }) {
+              return ContractTypeMap[row.contractType];
+            },
+          },
+          {
+            align: 'left',
+            width: 200,
+            minWidth: 200,
+            ellipsis: true,
+            colKey: 'paymentType',
+            title: '合同收付类型',
+            cell({ row }) {
+              return PaymentTypeMap[row.paymentType];
+            },
+          },
+          {
+            align: 'left',
+            width: 200,
+            minWidth: 200,
+            ellipsis: true,
+            colKey: 'amount',
             title: '合同金额（元）',
           },
           {
-            colKey: 'opration',
-            title: '操作',
-            minWidth: 200,
-            width: 200,
-            fixed: 'right',
             align: 'left',
+            fixed: 'right',
+            width: 200,
+            minWidth: 200,
+            colKey: 'op',
+            title: '操作',
             cell() {
               return (
                 <>
                   <Button theme='primary' variant='text'>
-                    详情
+                    管理
                   </Button>
                   <Button theme='primary' variant='text'>
                     删除
@@ -112,22 +188,31 @@ export default memo(() => {
         ]}
         selectedRowKeys={selectedRowKeys}
         hover
+        loading={loading}
         tableLayout='auto'
-        verticalAlign='middle'
+        verticalAlign='top'
         onSelectChange={onSelectChange}
         pagination={{
-          pageSize: 10,
-          current: 1,
+          pageSize,
           total,
+          current,
           showJumper: true,
-          onChange(pageInfo) {
-            console.log(pageInfo);
-          },
-          onPageSizeChange(size, pageInfo) {
-            console.log(size, pageInfo);
+          maxPageBtn: 3,
+          onPageSizeChange(size) {
+            dispatch(
+              getList({
+                pageSize: size,
+                current: 1,
+              }),
+            );
           },
           onCurrentChange(current, pageInfo) {
-            console.log(current, pageInfo);
+            dispatch(
+              getList({
+                pageSize: pageInfo.pageSize,
+                current: pageInfo.current,
+              }),
+            );
           },
         }}
       />

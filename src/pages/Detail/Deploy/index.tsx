@@ -7,7 +7,6 @@ import classnames from 'classnames';
 import request from 'utils/request';
 
 import Card from 'components/Card';
-// import {TAB\}
 import { getLineOptions, getBarOptions } from './chart';
 import { TABLE_COLUMNS, BASE_INFO_DATA } from './constant';
 
@@ -93,7 +92,7 @@ const BottomTable = () => {
   const handleConfirm = () => setVisible(false);
 
   useEffect(() => {
-    request.get('/api/get-project-list').then((res) => {
+    request.get('/api/get-project-list').then((res: any) => {
       if (res.code === 0) {
         const { list = [] } = res.data;
         setTableData({ tableData: list });
