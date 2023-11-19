@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { Layout, Row, Col, Input, Button } from 'tdesign-react';
 import { ViewListIcon, SearchIcon } from 'tdesign-icons-react';
 import { useAppDispatch } from 'modules/store';
-import { toggleMenu, TTheme } from 'modules/global';
+import { toggleMenu, ETheme } from 'modules/global';
 import HeaderRight from './HeaderRight';
 import { HeaderMenu } from '../Menu/Menu';
 
@@ -12,7 +12,7 @@ const { Header } = Layout;
 
 interface IHeaderProps {
   showMenu?: boolean; // 是否展示左侧菜单
-  theme?: TTheme; // 先默认light
+  theme?: 'light' | 'dark' | 'auto';
 }
 
 export default memo((props: IHeaderProps) => {

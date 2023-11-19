@@ -12,7 +12,7 @@ import Style from './Menu.module.less';
 const { MenuItem, SubMenu, HeadMenu } = Menu;
 interface IMenuProps {
   showLogo?: boolean;
-  theme?: 'light' | 'dark';
+  theme?: 'light' | 'dark' | 'auto';
   showOperation?: boolean;
 }
 
@@ -52,7 +52,7 @@ export const HeaderMenu = memo((props: IMenuProps) => {
     <HeadMenu
       expandType='popup'
       style={{ marginBottom: 20 }}
-      theme={props.theme}
+      // theme={props.theme}
       value={active}
       onChange={(v) => setActive(v)}
     >
@@ -72,7 +72,7 @@ export default memo((props: IMenuProps) => {
       value={location.pathname}
       style={{ flexShrink: 0, height: '100%' }}
       collapsed={globalState.collapsed}
-      theme={props.theme}
+      // theme={props.theme}
       operations={props.showOperation ? <div className={Style.menuTip}>{bottomText}</div> : undefined}
       logo={props.showLogo ? <MenuLogo collapsed={globalState.collapsed} /> : undefined}
     >

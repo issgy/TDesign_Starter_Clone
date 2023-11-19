@@ -4,16 +4,26 @@ import { TColorToken, TColorSeries, COLOR_TOKEN, LIGHT_CHART_COLORS } from '../.
 
 const namespace = 'global';
 
-export type TTheme = 'light' | 'dark';
+export enum ETheme {
+  light = 'light',
+  dark = 'dark',
+  auto = 'auto',
+}
+
+export enum ELayout {
+  side = 1,
+  top,
+  mix,
+}
 
 export interface IGlobalState {
   loading: boolean;
   version: string;
-  layout: 'layout1' | 'layout2' | 'layout3';
+  layout: ELayout;
   collapsed: boolean; // 菜单展开或闭合
   color: string;
   setting: boolean;
-  theme: TTheme;
+  theme: ETheme;
   showHeader: boolean;
   showBreadcrumbs: boolean;
   showFooter: boolean;
@@ -24,11 +34,11 @@ export interface IGlobalState {
 const initialState: IGlobalState = {
   loading: false,
   version: '0.0.1',
-  layout: 'layout1',
+  layout: ELayout.side,
   collapsed: window.innerWidth < 1000, // 宽度小于1000菜单闭合
   color: '#0052D9',
   setting: false,
-  theme: 'light',
+  theme: ETheme.light,
   showHeader: true,
   showBreadcrumbs: false,
   showFooter: true,

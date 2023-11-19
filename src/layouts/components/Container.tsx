@@ -4,22 +4,22 @@ import Menu from './Menu/Menu';
 import Header from './Header/Header';
 import Content from './Content/Content';
 import Footer from './Footer/Footer';
-import { TTheme } from 'modules/global';
+import { ELayout, ETheme } from 'modules/global';
 
 import Style from './Content/Content.module.less';
 
 interface ILayoutProps {
-  theme?: TTheme;
+  theme?: ETheme;
   showHeader?: boolean;
   showFooter?: boolean;
 }
 // 布局1
-export const Layout1 = React.memo((props: ILayoutProps) => (
-  <Layout className={Style.layout1Panel}>
+export const SideLayout = React.memo((props: ILayoutProps) => (
+  <Layout className={Style.sidePanel}>
     {/* 左侧菜单 */}
-    <Menu showLogo showOperation theme='light' />
+    <Menu showLogo showOperation />
     {/* 右侧 */}
-    <Layout className={Style.layout1Container}>
+    <Layout className={Style.sideContainer}>
       {/* 头部 */}
       {props.showHeader && <Header theme={props.theme} />}
       {/* 内容 */}
@@ -31,8 +31,8 @@ export const Layout1 = React.memo((props: ILayoutProps) => (
 ));
 
 // 布局2
-export const Layout2 = React.memo((props: ILayoutProps) => (
-  <Layout className={Style.layout2Panel}>
+export const TopLayout = React.memo((props: ILayoutProps) => (
+  <Layout className={Style.topPanel}>
     {props.showHeader && <Header theme='light' showMenu={true} />}
     <Content />
     {props.showFooter && <Footer />}
@@ -40,15 +40,21 @@ export const Layout2 = React.memo((props: ILayoutProps) => (
 ));
 
 // 布局3
-export const Layout3 = React.memo((props: ILayoutProps) => (
-  <Layout className={Style.layout3Panel}>
+export const MixLayout = React.memo((props: ILayoutProps) => (
+  <Layout className={Style.mixPanel}>
     {props.showHeader && <Header theme='light' />}
-    <Layout className={Style.layout3Main}>
+    <Layout className={Style.mixMain}>
       <Menu theme={props.theme} />
-      <Layout className={Style.layout3Content}>
+      <Layout className={Style.mixContent}>
         <Content />
         {props.showFooter && <Footer />}
       </Layout>
     </Layout>
   </Layout>
 ));
+
+export default {
+  [ELayout.side]: SideLayout,
+  [ELayout.top]: TopLayout,
+  [ELayout.mix]: MixLayout,
+};
