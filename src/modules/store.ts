@@ -3,11 +3,13 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 import global from './global';
 import listBase from './list/base';
+import listSelect from './list/select';
 
 // 使用combineReducers函数将多个reducer组合成一个单一的reducer
 const reducer = combineReducers({
   global,
   listBase,
+  listSelect,
 });
 
 // 使用configureStore函数来定义一个Redux Store

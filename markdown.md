@@ -75,3 +75,10 @@ const navigate = useNavigate()
 
 1、将基础列表页表单的数据变为动态获取
 2、修改二级详情页变为可交互
+
+## 11.20
+
+类式组件中需要使用 mapStateToProps/mapDispatchToProps 将 Redux store 中的 state 数据映射到组件的 props 中
+函数式组件则使用 hooks
+
+1、将筛选列表页表单数据变为动态获取
