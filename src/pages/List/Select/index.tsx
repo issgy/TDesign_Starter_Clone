@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Tag, Dialog, Button } from 'tdesign-react';
+import { Table, Dialog, Button } from 'tdesign-react';
 import PageBox from 'components/PageBox';
 import SearchForm from './components/SearchForm';
 import { useAppDispatch, useAppSelector } from 'modules/store';
@@ -32,8 +32,8 @@ const selectTable: React.FC = () => {
   useEffect(() => {
     dispatch(
       getList({
-        pageSize: 10,
-        current: 1,
+        pageSize: pageState.pageSize,
+        current: pageState.current,
       }),
     );
 
@@ -98,6 +98,7 @@ const selectTable: React.FC = () => {
           {
             title: '操作',
             width: 200,
+            minWidth: 200,
             colKey: 'op',
             align: 'left',
             fixed: 'right',

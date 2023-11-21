@@ -4,12 +4,11 @@ import { PANE_LIST } from '../constant';
 import Card from 'components/Card';
 import Board from 'components/Board';
 
-const gutter = [16, 16];
 const MouthPurchase = () => (
   <Card title='本月采购申请情况'>
-    <Row>
+    <Row gutter={[16, 16]}>
       {PANE_LIST.map((item) => (
-        <Col>
+        <Col key={item.title} xs={6} xl={3} span={12}>
           <Board
             title={item.title}
             trend={item.trend}
