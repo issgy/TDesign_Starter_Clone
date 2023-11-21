@@ -5,7 +5,7 @@ import Style from './Base.module.less';
 import { dataInfo } from '../consts';
 
 const Base = () => (
-  <Card title='基本信息' borded={false}>
+  <Card title='基本信息'>
     <div className={Style.infoBox}>
       {dataInfo.map((item) => (
         <div key={item.id} className={Style.infoBoxItem}>

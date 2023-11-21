@@ -11,7 +11,7 @@ const { StepItem } = Steps;
 
 export default React.memo(() => (
   <PageBox withPadding={false} withColor={false}>
-    <Card borded={true} title='基本信息'>
+    <Card title='基本信息'>
       <div className={classnames(Style.infoBox)}>
         {dataInfo.map((item) => (
           <div key={item.id} className={Style.infoBoxItem}>
@@ -29,7 +29,7 @@ export default React.memo(() => (
         ))}
       </div>
     </Card>
-    <Card borded={false} title='变更记录' className={Style.logBox}>
+    <Card title='变更记录' className={Style.logBox}>
       <div style={{ padding: '24px' }}>
         <Steps layout='vertical' theme='dot' current={1}>
           {dataStep.map((item) => (

@@ -40,7 +40,7 @@ const TopChart = () => {
       <Col span={6}>
         <Card
           title='告警情况'
-          extra={
+          operation={
             <Radio.Group defaultValue='week' onChange={(value) => tabChange(value === 'month')}>
               <Radio.Button value='week'>本周</Radio.Button>
               <Radio.Button value='month'>本月</Radio.Button>

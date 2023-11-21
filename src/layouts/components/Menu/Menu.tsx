@@ -5,7 +5,6 @@ import { useAppSelector } from 'modules/store';
 import { Menu, MenuValue } from 'tdesign-react';
 import { menu, IMenuItem } from 'configs/menu';
 import MenuLogo from './MenuLogo';
-import MenuLogoMini from './MenuLogoMini';
 
 import Style from './Menu.module.less';
 

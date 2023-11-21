@@ -7,19 +7,17 @@ import { MICRO_CHART_OPTIONS_BAR, MICRO_CHART_OPTIONS_LINE } from '../chart';
 
 import Style from './TopPanel.module.less';
 
-const BarChartIcon = React.memo(() => {
+const BarChartIcon = React.memo(() => (
   // const dynamicChartOption = useDynamicChart(MICRO_CHART_OPTIONS_BAR);
-  return (
-    <div className={Style.paneBarChart}>
-      <ReactEcharts
-        option={MICRO_CHART_OPTIONS_BAR} // option：图表配置项
-        notMerge={true}
-        lazyUpdate={true}
-        style={{ height: 36 }}
-      />
-    </div>
-  );
-});
+  <div className={Style.paneBarChart}>
+    <ReactEcharts
+      option={MICRO_CHART_OPTIONS_BAR} // option：图表配置项
+      notMerge={true}
+      lazyUpdate={true}
+      style={{ height: 36 }}
+    />
+  </div>
+));
 
 const PieChartIcon = React.memo(() => (
   <div className={Style.paneLineChart}>

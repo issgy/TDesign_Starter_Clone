@@ -1,7 +1,6 @@
 import { EChartOption } from 'echarts';
 
-import { getChartDataSet, getTimeArray, getRandomIntNumber } from 'utils/chart';
-import { CHART_LIST_COLOR, ONE_WEEK_LIST } from 'utils/chart';
+import { getChartDataSet, getTimeArray, getRandomIntNumber, ONE_WEEK_LIST } from 'utils/chart';
 
 // 折线图
 const getLineChartOptions = (dateTime: Array<string> = []): EChartOption => {

@@ -1,82 +1,98 @@
 import React, { useState } from 'react';
-import { Row, Col, Tag, Button, Dropdown } from 'tdesign-react';
+import { Button, Col, Dropdown, Row, Tag } from 'tdesign-react';
 import { Icon } from 'tdesign-icons-react';
 import ReactEcharts from 'echarts-for-react';
-
-import Board from '../../common/Board';
+import Board from 'components/Card';
 import LastWeekDatePicker from 'components/DatePicker';
-import { getLineChartOptions } from '../charts';
-import { IProduct, PRODUCT } from '../constant';
-import Style from '../index.module.less';
+import { PRODUCT_LIST } from '../constant';
+import { getLineChartOptions } from '../chart';
+import Style from './PurchaseTrend.module.less';
 
-const iconMap = [
-  <Icon key='a' name='shop' />,
-  <Icon key='b' name='calendar' />,
-  <Icon key='c' name='service' />,
-  <Icon key='d' name='user' />,
-  <Icon key='e' name='laptop' />,
-];
-const ProductBoard = ({ description, index, isSetup, name, type }: IProduct): React.ReactElement => {
-  const typeMap = ['A', 'B', 'C', 'D', 'E'];
+interface IProductTrendProps {
+  description: string;
+  isSetup: boolean;
+  name: string;
+  type: string;
+  icon: string;
+}
 
-  return (
-    <div className={Style.productBoard}>
-      <div className={Style.productInner}>
-        <Row justify='space-between'>
-          <div className={Style.productLogo}>{iconMap[type + 1]}</div>
-          <Tag theme='success'>{isSetup ? '已启用' : '已停用'}</Tag>
-        </Row>
-        <p className={Style.productName}>{name}</p>
-        <p className={Style.productDesc}>{description}</p>
-        <Row justify='space-between' align='middle'>
-          <div className={Style.iconWrap}>
-            <Button shape='circle' disabled={!isSetup}>
-              {typeMap[type]}
-            </Button>
-            <Button shape='circle' disabled={!isSetup} className={Style.lightBtn}>
-              <Icon name='add' />
-            </Button>
-          </div>
-          <Dropdown
-            disabled={!isSetup}
-            options={[
-              {
-                content: '管理',
-                value: 'manage',
-                onClick: () => {},
-              },
-              {
-                content: '删除',
-                value: 'delete',
-                onClick: () => {},
-              },
-            ]}
-          >
-            <Icon name='more' />
-          </Dropdown>
-        </Row>
+const ProductTrend = ({ type, isSetup, description, name, icon }: IProductTrendProps) => (
+  <div className={Style.productTrendPanel}>
+    <Row justify='space-between'>
+      <div className={Style.productLogo}>
+        <Icon name={icon} />
       </div>
-    </div>
-  );
-};
+      <Tag theme='success'>{isSetup ? '已启用' : '已停用'}</Tag>
+    </Row>
+
+    <p className={Style.productName}>{name}</p>
+    <p className={Style.productDesc}>{description}</p>
+    <Row justify='space-between' align='middle' className='cardControlClass'>
+      <div className={Style.iconWrap}>
+        <Button shape='circle' disabled={!isSetup}>
+          {type}
+        </Button>
+        <Button shape='circle' disabled={!isSetup} className={Style.lightBtn}>
+          <Icon name='add' />
+        </Button>
+      </div>
+      <Dropdown
+        disabled={!isSetup}
+        options={[
+          {
+            content: '管理',
+            value: 'manage',
+            onClick: () => {},
+          },
+          {
+            content: '删除',
+            value: 'delete',
+            onClick: () => {},
+          },
+        ]}
+      >
+        <Icon name='more' />
+      </Dropdown>
+    </Row>
+  </div>
+);
+
+const options = getLineChartOptions();
 
 const PurchaseTrend = () => {
-  const options = getLineChartOptions();
   const [customOptions, setCustomOptions] = useState(options);
+
   const onTimeChange = (value: Array<string>) => {
     const options = getLineChartOptions(value);
     setCustomOptions(options);
   };
+
   return (
-    <Row className={Style.boardMargin} gutter={16}>
+    <Row className={Style.purchaseTrendPanel} gutter={[16, 16]}>
       <Col xs={12} xl={9}>
         <Board title='采购商品申请趋势' description='(件)' operation={LastWeekDatePicker(onTimeChange)}>
-          <ReactEcharts option={customOptions} notMerge={true} lazyUpdate={true} style={{ height: 416 }} />
+          <ReactEcharts
+            option={customOptions} // option：图表配置项
+            notMerge={true}
+            lazyUpdate={true}
+            style={{ height: 453 }}
+          />
         </Board>
       </Col>
       <Col xs={12} xl={3}>
-        <ProductBoard {...PRODUCT} type={2} />
-        <ProductBoard {...PRODUCT} />
+        <Row gutter={[16, 16]}>
+          {PRODUCT_LIST.map((item, index) => (
+            <Col xs={12} key={index}>
+              <ProductTrend
+                type={item.type}
+                isSetup={item.isSetup}
+                description={item.description}
+                name={item.name}
+                icon={item.icon}
+              />
+            </Col>
+          ))}
+        </Row>
       </Col>
     </Row>
   );
