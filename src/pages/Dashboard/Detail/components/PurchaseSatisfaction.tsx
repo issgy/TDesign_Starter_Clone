@@ -3,7 +3,7 @@ import { Button } from 'tdesign-react';
 import ReactEcharts from 'echarts-for-react';
 
 import Board from 'pages/Dashboard/common/Board';
-import LastWeekDatePicker from 'pages/Dashboard/common/DatePicker';
+import LastWeekDatePicker from 'components/DatePicker';
 import { getScatterChartOptions } from '../charts';
 
 import Style from '../index.module.less';

@@ -1,16 +1,17 @@
-import dayjs from 'dayjs';
-import { RECENT_7_DAYS } from './date';
+import dayjs, { Dayjs } from 'dayjs';
 
 type ChartValue = number | string;
 
-const CHART_LIST_COLOR = ['#0052D9', '#BCC4D0', '#7D46BD', '#0594FA', '#ED7B2F'];
+const RECENT_7_DAYS: [Dayjs, Dayjs] = [dayjs().subtract(7, 'day'), dayjs().subtract(1, 'day')];
+export const CHART_LIST_COLOR = ['#0052D9', '#BCC4D0', '#7D46BD', '#0594FA', '#ED7B2F'];
+export const ONE_WEEK_LIST: Array<string> = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
 
-function getRandomIntNumber(): number {
+export function getRandomIntNumber(): number {
   const randomNumber = Math.floor(Math.random() * 100) + 1;
   return randomNumber;
 }
 
-function getTimeArray(dateTime: string[] = [], divideNum = 10, format = 'MM-DD'): string[] {
+export function getTimeArray(dateTime: string[] = [], divideNum = 10, format = 'MM-DD'): string[] {
   const timeArray: string[] = [];
   if (dateTime.length === 0) {
     dateTime.push(...RECENT_7_DAYS.map((item) => item.format('MM-DD')));
@@ -23,7 +24,7 @@ function getTimeArray(dateTime: string[] = [], divideNum = 10, format = 'MM-DD')
   return timeArray;
 }
 
-const getChartDataSet = (dateTime: Array<string> = [], divideNum = 10): ChartValue[][] => {
+export const getChartDataSet = (dateTime: Array<string> = [], divideNum = 10): ChartValue[][] => {
   const timeArray = getTimeArray(dateTime, divideNum);
   const inArray = [];
   const outArray = [];
@@ -33,6 +34,3 @@ const getChartDataSet = (dateTime: Array<string> = [], divideNum = 10): ChartVal
   }
   return [timeArray, inArray, outArray];
 };
-
-export default getChartDataSet;
-export { getTimeArray, getRandomIntNumber, CHART_LIST_COLOR };

@@ -1,27 +1,24 @@
 import type { EChartOption } from 'echarts';
-import getChartDataSet from '../common/chart';
-import { CHART_LIST_COLOR } from '../common/constant';
+import { ONE_WEEK_LIST, getChartDataSet } from 'utils/chart';
 
 // 折线图
-const getLineChartOptions = (dateTime: Array<string> = []): EChartOption => {
-  // timeArray:['MM-DD','MM-DD',....]
-  // inArray和outArray:10个1~100以内的随机数字符['','',...]
+export const getLineChartOptions = (dateTime: Array<string> = []): EChartOption => {
   const [timeArray, inArray, outArray] = getChartDataSet(dateTime);
   return {
-    // 提示框
     tooltip: {
-      trigger: 'item', // 数据项图形触发
+      trigger: 'item',
     },
     grid: {
       left: '0',
-      right: '20',
-      bottom: '20',
+      right: '20px',
+      top: '5px',
+      bottom: '36px',
       containLabel: true,
     },
     legend: {
       left: 'center',
       bottom: '0',
-      orient: 'horizontal', // 横向布局
+      orient: 'horizontal', // legend 横向布局。
       data: ['本月', '上月'],
       textStyle: {
         fontSize: 12,
@@ -31,6 +28,12 @@ const getLineChartOptions = (dateTime: Array<string> = []): EChartOption => {
       type: 'category',
       data: timeArray,
       boundaryGap: false,
+      axisLine: {
+        lineStyle: {
+          color: '#E3E6EB',
+          width: 1,
+        },
+      },
     },
     yAxis: {
       type: 'value',
@@ -68,7 +71,7 @@ const getLineChartOptions = (dateTime: Array<string> = []): EChartOption => {
 };
 
 //  饼图
-const getPieChartsOptions = (radius = 42): EChartOption => ({
+export const getPieChartOptions = (radius = 42): EChartOption => ({
   tooltip: {
     trigger: 'item',
   },
@@ -92,6 +95,9 @@ const getPieChartsOptions = (radius = 42): EChartOption => ({
       type: 'pie',
       radius: ['48%', '60%'],
       avoidLabelOverlap: false,
+      itemStyle: {
+        borderWidth: 1,
+      },
       label: {
         show: true,
         position: 'center',
@@ -139,10 +145,9 @@ const getPieChartsOptions = (radius = 42): EChartOption => ({
 });
 
 // 柱状图
-const getBarChartOptions = (dateTime: Array<string> = []): EChartOption => {
+export const getBarChartOptions = (dateTime: Array<string> = []): EChartOption => {
   const [timeArray, inArray, outArray] = getChartDataSet(dateTime);
   return {
-    color: CHART_LIST_COLOR,
     tooltip: {
       trigger: 'item',
     },
@@ -151,8 +156,7 @@ const getBarChartOptions = (dateTime: Array<string> = []): EChartOption => {
       data: timeArray,
       axisLine: {
         lineStyle: {
-          color: CHART_LIST_COLOR[1],
-          width: 2,
+          width: 1,
         },
       },
     },
@@ -161,23 +165,23 @@ const getBarChartOptions = (dateTime: Array<string> = []): EChartOption => {
     },
     grid: {
       top: '5%',
-      left: '25',
+      left: '25px',
       right: 0,
-      bottom: '60',
+      bottom: '60px',
     },
     legend: {
-      left: 'center',
-      bottom: '0',
-      orient: 'horizontal',
-      data: ['本月', '上月'],
       icon: 'rect',
       itemWidth: 12,
       itemHeight: 4,
       itemGap: 48,
       textStyle: {
         fontSize: 12,
-        color: 'rgba(0,0,0,0.6)',
+        color: 'rgba(0, 0, 0, 0.6)',
       },
+      left: 'center',
+      bottom: '0',
+      orient: 'horizontal',
+      data: ['本月', '上月'],
     },
     series: [
       {
@@ -189,12 +193,87 @@ const getBarChartOptions = (dateTime: Array<string> = []): EChartOption => {
         name: '上月',
         data: inArray,
         type: 'bar',
-        itemStyle: {
-          color: CHART_LIST_COLOR[1],
-        },
       },
     ],
   };
 };
 
-export { getLineChartOptions, getPieChartsOptions, getBarChartOptions };
+export const MICRO_CHART_OPTIONS_LINE: EChartOption = {
+  xAxis: {
+    type: 'category',
+    show: false,
+    data: ONE_WEEK_LIST,
+  },
+  yAxis: {
+    show: false,
+    type: 'value',
+  },
+  grid: {
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    tooltip: {
+      show: false,
+    },
+  },
+  color: ['#fff'],
+  series: [
+    {
+      data: [150, 230, 224, 218, 135, 147, 260],
+      type: 'line',
+      showSymbol: false,
+    },
+  ],
+};
+
+export const MICRO_CHART_OPTIONS_BAR: EChartOption = {
+  xAxis: {
+    type: 'category',
+    show: false,
+    data: ONE_WEEK_LIST,
+  },
+  yAxis: {
+    show: false,
+    type: 'value',
+  },
+  grid: {
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    tooltip: {
+      show: false,
+    },
+  },
+  series: [
+    {
+      data: [
+        100,
+        130,
+        184,
+        218,
+        {
+          value: 135,
+          itemStyle: {
+            opacity: 0.2,
+          },
+        },
+        {
+          value: 118,
+          itemStyle: {
+            opacity: 0.2,
+          },
+        },
+        {
+          value: 60,
+          itemStyle: {
+            opacity: 0.2,
+          },
+        },
+      ],
+      type: 'bar',
+      barWidth: 9,
+    },
+  ],
+};

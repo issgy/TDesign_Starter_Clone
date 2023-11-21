@@ -4,7 +4,7 @@ import { Icon } from 'tdesign-icons-react';
 import ReactEcharts from 'echarts-for-react';
 
 import Board from '../../common/Board';
-import LastWeekDatePicker from 'pages/Dashboard/common/DatePicker';
+import LastWeekDatePicker from 'components/DatePicker';
 import { getLineChartOptions } from '../charts';
 import { IProduct, PRODUCT } from '../constant';
 import Style from '../index.module.less';
