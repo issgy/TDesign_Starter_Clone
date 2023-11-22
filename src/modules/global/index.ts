@@ -14,6 +14,7 @@ export enum ELayout {
   side = 1,
   top,
   mix,
+  fullPage,
 }
 
 export interface IGlobalState {
@@ -21,6 +22,7 @@ export interface IGlobalState {
   version: string;
   layout: ELayout;
   collapsed: boolean; // 菜单展开或闭合
+  isFullPage: boolean;
   color: string;
   setting: boolean;
   theme: ETheme;
@@ -36,6 +38,7 @@ const initialState: IGlobalState = {
   version: '0.0.1',
   layout: ELayout.side,
   collapsed: window.innerWidth < 1000, // 宽度小于1000菜单闭合
+  isFullPage: false,
   color: '#0052D9',
   setting: false,
   theme: ETheme.light,
@@ -80,6 +83,9 @@ const globalSlice = createSlice({
         state.layout = action?.payload;
       }
     },
+    switchFullPage: (state, action) => {
+      state.isFullPage = action?.payload;
+    },
     toggleShowHeader: (state) => {
       state.showHeader = !state.showHeader;
     },
@@ -106,6 +112,7 @@ export const {
   switchTheme,
   switchColor,
   switchLayout,
+  switchFullPage,
   toggleShowHeader,
   toggleShowFooter,
   toggleShowBreadcrumbs,

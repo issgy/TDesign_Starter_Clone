@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'modules/store';
-import { selectGlobal, toggleSetting, toggleMenu } from 'modules/global';
+import { selectGlobal, toggleSetting, toggleMenu, ELayout } from 'modules/global';
 import { Layout, Drawer } from 'tdesign-react';
 import LayoutMap from './components/Container';
 import Style from './index.module.less';
@@ -26,7 +26,7 @@ export default memo(() => {
     };
   });
 
-  const Container = LayoutMap[globalState.layout];
+  const Container = LayoutMap[globalState.isFullPage ? ELayout.fullPage : globalState.layout];
 
   return (
     <Layout className={Style.mainPanel}>

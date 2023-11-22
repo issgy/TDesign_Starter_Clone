@@ -8,7 +8,7 @@ import { ContractTypeMap, PaymentTypeMap, StatusMap } from '../Base/index';
 
 import './index.module.less';
 
-const selectTable: React.FC = () => {
+export const SelectTable = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<(string | number)[]>([0, 1]);
   const [visible, setVisible] = useState(false);
   const dispatch = useAppDispatch();
@@ -42,7 +42,7 @@ const selectTable: React.FC = () => {
     };
   }, []);
   return (
-    <PageBox>
+    <>
       <SearchForm />
       <Table
         data={contractList}
@@ -159,8 +159,13 @@ const selectTable: React.FC = () => {
       <Dialog header='确认删除当前所选合同？' visible={visible} onClose={handleClose}>
         <p>删除后的所有合同信息将被清空，且无法恢复</p>
       </Dialog>
-    </PageBox>
+    </>
   );
 };
 
-export default React.memo(selectTable);
+const selectPage: React.FC = () => (
+  <PageBox withColor withPadding>
+    <SelectTable />
+  </PageBox>
+);
+export default React.memo(selectPage);

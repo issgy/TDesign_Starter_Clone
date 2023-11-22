@@ -2,7 +2,7 @@ import React from 'react';
 import PageBox from 'components/PageBox';
 import { SearchIcon } from 'tdesign-icons-react';
 import { Tree, Input } from 'tdesign-react';
-import SelectTable from '../Select/index';
+import { SelectTable } from '../Select/index';
 import { treeList } from './consts';
 import Style from './index.module.less';
 

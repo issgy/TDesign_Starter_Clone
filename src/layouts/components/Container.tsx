@@ -6,7 +6,7 @@ import Content from './Content/Content';
 import Footer from './Footer/Footer';
 import { ELayout, ETheme } from 'modules/global';
 
-import Style from './Content/Content.module.less';
+import Style from './Container.module.less';
 
 interface ILayoutProps {
   theme?: ETheme;
@@ -53,8 +53,11 @@ export const MixLayout = React.memo((props: ILayoutProps) => (
   </Layout>
 ));
 
+const FullPageLayout = React.memo(() => <Content />);
+
 export default {
   [ELayout.side]: SideLayout,
   [ELayout.top]: TopLayout,
   [ELayout.mix]: MixLayout,
+  [ELayout.fullPage]: FullPageLayout,
 };

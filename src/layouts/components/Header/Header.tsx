@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { Layout, Row, Col, Input, Button } from 'tdesign-react';
 import { ViewListIcon, SearchIcon } from 'tdesign-icons-react';
 import { useAppDispatch } from 'modules/store';
-import { toggleMenu, ETheme } from 'modules/global';
+import { toggleMenu } from 'modules/global';
 import HeaderRight from './HeaderRight';
 import { HeaderMenu } from '../Menu/Menu';
 
