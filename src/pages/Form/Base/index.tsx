@@ -35,7 +35,7 @@ export default React.memo(() => {
     MessagePlugin.info(`文件${file.name}上传失败`);
   };
   return (
-    <PageBox withPadding={false}>
+    <PageBox withPadding={false} withColor>
       <div className={Style.formContainer}>
         <Form onSubmit={onSubmit} onReset={onReset} className={Style.baseForm} labelWidth={100} labelAlign={labelAlign}>
           <div>

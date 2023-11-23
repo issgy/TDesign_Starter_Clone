@@ -81,7 +81,7 @@ export default memo(() => {
     setSelectedRowKeys(value);
   };
   return (
-    <PageBox>
+    <PageBox withColor withPadding>
       <Row justify='space-between' style={{ color: '#666', marginBottom: '20px' }}>
         <Col>
           <Row gutter={8} align='middle'>

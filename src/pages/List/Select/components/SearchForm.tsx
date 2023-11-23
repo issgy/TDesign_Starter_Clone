@@ -18,7 +18,7 @@ const SearchForm = () => {
     MessagePlugin.info('重置成功');
   };
   return (
-    <div className='list-dommon-table-query'>
+    <div className='list-dommon-table-query' style={{ marginBottom: '20px' }}>
       <Form ref={formRef} onSubmit={onSubmit} onReset={onReset} labelWidth={80} colon>
         <Row>
           <Col flex='1'>

@@ -59,7 +59,7 @@ export default React.memo(() => {
     }
   };
   return (
-    <PageBox>
+    <PageBox withColor withPadding>
       <Steps current={current}>
         {steps.map((item) => (
           <StepItem key={item.title} title={item.title} />

@@ -5,19 +5,32 @@ import Style from './index.module.less';
 
 const { Content } = Layout;
 
-interface IProps extends React.HTMLAttributes<HTMLElement> {
+interface IPageBoxProps {
   withColor?: boolean;
   withPadding?: boolean;
+  className?: string;
 }
 
-const PageBox = ({ withColor = true, withPadding = true, ...others }: IProps) => (
+const PageBox: React.FC<React.PropsWithChildren<IPageBoxProps>> = ({
+  children,
+  withColor,
+  withPadding,
+  className,
+  ...others
+}) => (
   <Content
-    className={classnames(Style.pageBox, {
-      [Style.pageBoxWithColor]: withColor,
-      [Style.pageBoxWithPadding]: withPadding,
-    })}
+    className={classnames(
+      Style.pageBox,
+      {
+        [Style.pageBoxWithColor]: withColor,
+        [Style.pageBoxWithPadding]: withPadding,
+      },
+      className,
+    )}
     {...others}
-  ></Content>
+  >
+    {children}
+  </Content>
 );
 
 export default React.memo(PageBox);
