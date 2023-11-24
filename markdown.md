@@ -90,3 +90,7 @@ const navigate = useNavigate()
 ## 11.23
 
 1、修复 css 样式
+
+## 11.24
+
+1、完成登陆注册界面

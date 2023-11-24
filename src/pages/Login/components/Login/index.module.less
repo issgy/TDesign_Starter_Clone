@@ -29,8 +29,44 @@
       }
 }
 
+.tipContainer {
+    width: 192px;
+    font-size: 14px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+
+    :global {
+        .tip{
+            color: var(--td-text-color-primary);
+        }
+
+        .refresh {
+            display: flex;
+            align-items: center;
+            color: var(--td-brand-color);
+
+            .t-icon {
+                font-size: 14px;
+                margin-left: 4px;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
 .checkContainerTip {
     color: var(--td-brand-color);
+}
+
+.verificationBtn {
+    flex-shrink: 0;
+    width: 100px;
+    height: 40px;
+    margin-left: 11px;
 }
 
 .btnContainer {
