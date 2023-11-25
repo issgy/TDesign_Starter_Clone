@@ -18,7 +18,7 @@ export default React.memo(() => {
   };
   return (
     <div
-      className={classnames(Style.loginWrapper, { [Style.light]: theme === 'light', [Style.dark]: theme === 'dark' })}
+      className={classnames(Style.loginWrapper, { [Style.light]: theme === 'light', [Style.dark]: theme !== 'light' })}
     >
       <LoginHeader />
       <div className={Style.loginContainer}>

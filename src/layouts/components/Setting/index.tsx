@@ -12,11 +12,9 @@ import {
   toggleShowHeader,
   toggleShowFooter,
   toggleShowBreadcrumbs,
-  switchChartColor,
   ELayout,
   ETheme,
 } from 'modules/global/index';
-import { DARK_CHART_COLORS, LIGHT_CHART_COLORS } from 'configs/color';
 
 import Style from './index.module.less';
 
@@ -56,17 +54,14 @@ export default React.memo(() => {
   const dispatch = useAppDispatch();
   const globalState = useAppSelector(selectGlobal);
 
-  const handleSwitchTheme = (value: string | number) => {
-    dispatch(switchTheme(value));
-    if (value) {
-      const isDarkMode = value === ETheme.dark;
-      switchChartColor(isDarkMode ? DARK_CHART_COLORS : LIGHT_CHART_COLORS);
-    }
-  };
   return (
     <div>
       <div className={Style.settingTitle}>主题模式</div>
-      <RadioRect defaultValue={globalState.theme} onChange={handleSwitchTheme} options={themeList} />
+      <RadioRect
+        defaultValue={globalState.theme}
+        onChange={(value) => dispatch(switchTheme(value))}
+        options={themeList}
+      />
 
       <div className={Style.settingTitle}>主题色</div>
       <RadioColor defaultValue={globalState.color} onChange={(color) => dispatch(switchColor(color))} />

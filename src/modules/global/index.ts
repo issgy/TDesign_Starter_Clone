@@ -1,13 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from 'modules/store';
-import { TColorToken, TColorSeries, COLOR_TOKEN, LIGHT_CHART_COLORS } from '../../configs/color';
+import { TColorToken, TColorSeries, COLOR_TOKEN, LIGHT_CHART_COLORS, DARK_CHART_COLORS } from '../../configs/color';
 
 const namespace = 'global';
 
 export enum ETheme {
   light = 'light',
   dark = 'dark',
-  auto = 'auto',
 }
 
 export enum ELayout {
@@ -67,10 +66,19 @@ const globalSlice = createSlice({
       state.setting = !state.setting;
     },
     switchTheme: (state, action) => {
-      if (action?.payload) {
-        state.theme = action?.payload;
-        document.documentElement.setAttribute('theme-mode', action?.payload);
+      let finalTheme = action?.payload;
+      if (!finalTheme) {
+        // 跟随系统
+        const media = window.matchMedia('(prefers-color-scheme:dark)');
+        if (media.matches) {
+          finalTheme = media.matches ? ETheme.dark : ETheme.light;
+        }
       }
+      // 切换 chart 颜色
+      state.chartColors = finalTheme === ETheme.dark ? DARK_CHART_COLORS : LIGHT_CHART_COLORS;
+      // 切换主题颜色
+      state.theme = finalTheme;
+      document.documentElement.setAttribute('theme-mode', finalTheme);
     },
     switchColor: (state, action) => {
       if (action?.payload) {
@@ -95,11 +103,6 @@ const globalSlice = createSlice({
     toggleShowBreadcrumbs: (state) => {
       state.showBreadcrumbs = !state.showBreadcrumbs;
     },
-    switchChartColor: (state, action) => {
-      if (action?.payload) {
-        state.chartColors = action?.payload;
-      }
-    },
   },
 });
 
@@ -116,7 +119,6 @@ export const {
   toggleShowHeader,
   toggleShowFooter,
   toggleShowBreadcrumbs,
-  switchChartColor,
 } = globalSlice.actions;
 
 // 同时，还会通过 export default 导出生成的 reducer 函数。
