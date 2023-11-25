@@ -5,6 +5,8 @@ import { Button, Checkbox, Form, Input, FormInstanceFunctions, SubmitContext, Me
 import { UserIcon, LockOnIcon, BrowseIcon, BrowseOffIcon, RefreshIcon } from 'tdesign-icons-react';
 import QRCode from 'qrcode.react';
 import useCountTime from '../../hooks/useCountTime';
+import { useAppDispatch } from 'modules/store';
+import { login } from 'modules/user';
 
 import Style from './index.module.less';
 
@@ -13,20 +15,23 @@ const { FormItem } = Form;
 export type ELoginType = 'password' | 'phone' | 'qrcode';
 
 export default function Login() {
+  const dispatch = useAppDispatch();
   const [loginType, setLoginType] = useState<ELoginType>('password');
   const [showPsw, toggleShowPsw] = useState(false);
   const { countTime, setupCountTime } = useCountTime(60);
   const formRef = useRef<FormInstanceFunctions>();
   const navigate = useNavigate();
-  const onSubmit = (e: SubmitContext) => {
+  const onSubmit = async (e: SubmitContext) => {
     if (e.validateResult === true) {
-      try {
-        const formValue = formRef.current?.getFieldsValue?.(true) || {};
+      const formValue = formRef.current?.getFieldsValue?.(true) || {};
+      const { account, password } = formValue;
+      const res = await dispatch(login({ account, password }));
+      if (res.meta.requestStatus === 'fulfilled') {
         MessagePlugin.success('登陆成功');
 
         navigate('/dashboard/base');
-      } catch (e) {
-        MessagePlugin.error('登陆失败');
+      } else {
+        MessagePlugin.error(res?.error?.message);
       }
     }
   };
@@ -42,13 +47,13 @@ export default function Login() {
         {loginType === 'password' && (
           <>
             <FormItem name='account' rules={[{ required: true, message: '账号必填', type: 'error' }]}>
-              <Input size='large' placeholder='请输入账号：admin' prefixIcon={<UserIcon />}></Input>
+              <Input size='large' placeholder='请输入账号：xj' prefixIcon={<UserIcon />}></Input>
             </FormItem>
             <FormItem name='password' rules={[{ required: true, message: '密码必填', type: 'error' }]}>
               <Input
                 type={showPsw ? 'text' : 'password'}
                 size='large'
-                placeholder='请输入登录密码：admin'
+                placeholder='请输入登录密码：123'
                 prefixIcon={<LockOnIcon />}
                 suffixIcon={
                   showPsw ? (

@@ -2,12 +2,14 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 import global from './global';
+import user from './user';
 import listBase from './list/base';
 import listSelect from './list/select';
 
 // 使用combineReducers函数将多个reducer组合成一个单一的reducer
 const reducer = combineReducers({
   global,
+  user,
   listBase,
   listSelect,
 });
