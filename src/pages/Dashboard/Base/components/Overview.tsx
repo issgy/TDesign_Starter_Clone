@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Button, Col, Row } from 'tdesign-react';
+import { Button, Col, Row, Card } from 'tdesign-react';
 import ReactEcharts from 'echarts-for-react';
-import { Card } from 'tdesign-react';
 import Board, { ETrend } from 'components/Board';
 import LastWeekDatePicker from 'components/DatePicker';
 import { getBarChartOptions } from '../chart';
