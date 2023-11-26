@@ -1,8 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Steps } from 'tdesign-react';
+import { Steps, Card } from 'tdesign-react';
 import PageBox from 'components/PageBox';
-import Card from 'components/Card';
 import { dataInfo, dataStep } from './consts';
 
 import Style from './index.module.less';

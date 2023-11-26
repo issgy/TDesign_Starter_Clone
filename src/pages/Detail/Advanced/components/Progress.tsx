@@ -1,6 +1,5 @@
 import React from 'react';
-import { Steps } from 'tdesign-react';
-import Card from 'components/Card';
+import { Steps, Card } from 'tdesign-react';
 import { dataStep, stepCurrent } from '../consts';
 import Style from '../index.module.less';
 

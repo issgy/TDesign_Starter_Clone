@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Table, Tag } from 'tdesign-react';
 import { dataBuyList, total } from '../consts';
-import Card from 'components/Card';
+import { Card } from 'tdesign-react';
 import Style from '../index.module.less';
 
 const Detail = () => (

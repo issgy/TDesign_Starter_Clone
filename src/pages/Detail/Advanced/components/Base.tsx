@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import Card from 'components/Card';
+import { Card } from 'tdesign-react';
 import Style from './Base.module.less';
 import { dataInfo } from '../consts';
 

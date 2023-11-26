@@ -1,6 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'tdesign-react';
-import Card from 'components/Card';
+import { Col, Row, Card } from 'tdesign-react';
 import ProductCard from './ProductCard';
 import Style from '../index.module.less';
 

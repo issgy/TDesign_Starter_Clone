@@ -1,7 +1,6 @@
 import React from 'react';
-import { Row, Col } from 'tdesign-react';
+import { Row, Col, Card } from 'tdesign-react';
 import { PANE_LIST } from '../constant';
-import Card from 'components/Card';
 import Board from 'components/Board';
 
 const MouthPurchase = () => (

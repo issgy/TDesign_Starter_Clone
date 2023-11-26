@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Radio, Table, Dialog } from 'tdesign-react';
+import { Row, Col, Radio, Table, Dialog, Card } from 'tdesign-react';
 import type { TableSort, TdPrimaryTableProps } from 'tdesign-react/es/table';
 import ReactEcharts from 'echarts-for-react';
 import classnames from 'classnames';
 
 import request from 'utils/request';
 
-import Card from 'components/Card';
 import { getLineOptions, getBarOptions } from './chart';
 import { TABLE_COLUMNS, BASE_INFO_DATA } from './constant';
 
@@ -40,7 +39,7 @@ const TopChart = () => {
       <Col span={6}>
         <Card
           title='告警情况'
-          operation={
+          actions={
             <Radio.Group defaultValue='week' onChange={(value) => tabChange(value === 'month')}>
               <Radio.Button value='week'>本周</Radio.Button>
               <Radio.Button value='month'>本月</Radio.Button>

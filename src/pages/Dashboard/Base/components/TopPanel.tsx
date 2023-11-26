@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row } from 'tdesign-react';
 import { UsergroupIcon, FileIcon } from 'tdesign-icons-react';
 import ReactEcharts from 'echarts-for-react';
-import Board, { IBoardProps } from 'components/Board';
+import Board, { IBoardProps, ETrend } from 'components/Board';
 import { MICRO_CHART_OPTIONS_BAR, MICRO_CHART_OPTIONS_LINE } from '../chart';
 
 import Style from './TopPanel.module.less';
@@ -33,21 +33,21 @@ const PANE_LIST: Array<IBoardProps> = [
   {
     title: '总收入',
     count: '¥ 28,425.00',
-    trend: 'up',
+    trend: ETrend.up,
     trendNum: '20.5%',
     Icon: <PieChartIcon />,
   },
   {
     title: '总退款',
     count: '¥ 768.00',
-    trend: 'down',
+    trend: ETrend.down,
     trendNum: '20.5%',
     Icon: <BarChartIcon />,
   },
   {
     title: '活跃用户（个）',
     count: '1126',
-    trend: 'down',
+    trend: ETrend.down,
     trendNum: '20.5%',
     Icon: (
       <div className={Style.iconWrap}>
@@ -58,7 +58,7 @@ const PANE_LIST: Array<IBoardProps> = [
   {
     title: '产生订单（个）',
     count: '527',
-    trend: 'down',
+    trend: ETrend.down,
     trendNum: '20.5%',
     Icon: (
       <div className={Style.iconWrap}>
