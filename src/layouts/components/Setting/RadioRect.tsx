@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
 import Style from './index.module.less';
+import { ETheme } from 'types/index.d';
+import { ELayout } from 'modules/global';
 
 interface IOption {
-  value: number | string;
+  value?: ETheme | ELayout;
   image: JSX.Element | string;
   name?: string;
 }
 interface IProps {
   defaultValue?: number | string;
-  onChange: (value: number | string) => void;
+  onChange: (value?: number | string) => void;
   options: IOption[];
 }
 export default React.memo((props: IProps) => {

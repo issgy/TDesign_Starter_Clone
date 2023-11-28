@@ -8,7 +8,6 @@ import { MICRO_CHART_OPTIONS_BAR, MICRO_CHART_OPTIONS_LINE } from '../chart';
 import Style from './TopPanel.module.less';
 
 const BarChartIcon = React.memo(() => (
-  // const dynamicChartOption = useDynamicChart(MICRO_CHART_OPTIONS_BAR);
   <div className={Style.paneBarChart}>
     <ReactEcharts
       option={MICRO_CHART_OPTIONS_BAR} // option：图表配置项

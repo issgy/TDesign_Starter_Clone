@@ -4,7 +4,8 @@ import Menu from './Menu/Menu';
 import Header from './Header/Header';
 import Content from './Content/Content';
 import Footer from './Footer/Footer';
-import { ELayout, ETheme } from 'modules/global';
+import { ELayout } from 'modules/global';
+import { ETheme } from 'types/index.d';
 
 import Style from './Container.module.less';
 

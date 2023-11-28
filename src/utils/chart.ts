@@ -3,7 +3,6 @@ import dayjs, { Dayjs } from 'dayjs';
 type ChartValue = number | string;
 
 const RECENT_7_DAYS: [Dayjs, Dayjs] = [dayjs().subtract(7, 'day'), dayjs().subtract(1, 'day')];
-export const CHART_LIST_COLOR = ['#0052D9', '#BCC4D0', '#7D46BD', '#0594FA', '#ED7B2F'];
 export const ONE_WEEK_LIST: Array<string> = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
 
 export function getRandomIntNumber(): number {

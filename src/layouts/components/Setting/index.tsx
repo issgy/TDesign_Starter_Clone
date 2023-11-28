@@ -13,8 +13,8 @@ import {
   toggleShowFooter,
   toggleShowBreadcrumbs,
   ELayout,
-  ETheme,
 } from 'modules/global/index';
+import { ETheme } from 'types/index.d';
 
 import Style from './index.module.less';
 
@@ -30,7 +30,7 @@ const themeList = [
     name: '黑暗',
   },
   {
-    value: ETheme.auto,
+    // value: ETheme.auto,
     image: System,
     name: '跟随系统',
   },
@@ -59,7 +59,7 @@ export default React.memo(() => {
       <div className={Style.settingTitle}>主题模式</div>
       <RadioRect
         defaultValue={globalState.theme}
-        onChange={(value) => dispatch(switchTheme(value))}
+        onChange={(value) => dispatch(switchTheme(value as ETheme))}
         options={themeList}
       />
 
