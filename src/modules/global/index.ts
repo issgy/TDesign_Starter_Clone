@@ -37,7 +37,7 @@ const initialState: IGlobalState = {
   setting: false,
   theme: ETheme.light,
   showHeader: true,
-  showBreadcrumbs: false,
+  showBreadcrumbs: true,
   showFooter: true,
   chartColors: CHART_COLORS.light,
 };
@@ -68,7 +68,6 @@ const globalSlice = createSlice({
           finalTheme = media.matches ? ETheme.dark : ETheme.light;
         }
       }
-      console.log(finalTheme);
       // 切换 chart 颜色
       state.chartColors = CHART_COLORS[finalTheme];
       // 切换主题颜色

@@ -4,10 +4,8 @@ import MiddleChart from './components/MiddleChart';
 import RankList from './components/RankList';
 import Overview from './components/Overview';
 
-import Style from './index.module.less';
-
 const DashBoard = () => (
-  <div className={Style.dashboardPanel}>
+  <div>
     <TopPanel />
     {/* 统计数据和销售渠道 */}
     <MiddleChart />
