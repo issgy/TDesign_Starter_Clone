@@ -1,7 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
 import { Steps, Card } from 'tdesign-react';
-import PageBox from 'components/PageBox';
 import { dataInfo, dataStep } from './consts';
 
 import Style from './index.module.less';
@@ -9,7 +8,7 @@ import Style from './index.module.less';
 const { StepItem } = Steps;
 
 export default React.memo(() => (
-  <PageBox withPadding={false} withColor={false}>
+  <>
     <Card title='基本信息'>
       <div className={classnames(Style.infoBox)}>
         {dataInfo.map((item) => (
@@ -37,5 +36,5 @@ export default React.memo(() => (
         </Steps>
       </div>
     </Card>
-  </PageBox>
+  </>
 ));

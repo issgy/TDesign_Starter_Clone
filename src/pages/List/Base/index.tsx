@@ -1,9 +1,10 @@
 import React, { memo, useEffect, useState } from 'react';
+import classnames from 'classnames';
 import { Row, Col, Table, Button, Input, Tag } from 'tdesign-react';
 import { ChevronUpCircleIcon, SearchIcon, ChevronDownCircleIcon } from 'tdesign-icons-react';
-import PageBox from 'components/PageBox';
 import { useAppSelector, useAppDispatch } from 'modules/store';
 import { selectListBase, getList, clearPageState } from 'modules/list/base';
+import CommonStyle from 'styles/common.module.less';
 
 export const StatusMap: {
   [key: number]: React.ReactElement;
@@ -81,7 +82,7 @@ export default memo(() => {
     setSelectedRowKeys(value);
   };
   return (
-    <PageBox withColor withPadding>
+    <div className={classnames(CommonStyle.pageWithPadding, CommonStyle.pageWithColor)}>
       <Row justify='space-between' style={{ color: '#666', marginBottom: '20px' }}>
         <Col>
           <Row gutter={8} align='middle'>
@@ -216,6 +217,6 @@ export default memo(() => {
           },
         }}
       />
-    </PageBox>
+    </div>
   );
 });

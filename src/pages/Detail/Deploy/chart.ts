@@ -1,5 +1,6 @@
 import type { EChartOption } from 'echarts';
-import { CHART_LIST_COLOR, getTimeArray, getRandomIntNumber } from 'utils/chart';
+import { getTimeArray, getRandomIntNumber } from 'utils/chart';
+import { defaultColor } from 'configs/color';
 
 export function getLineOptions(dateTime: any = []): EChartOption {
   let dateArray: Array<string> = ['00:00', '02:00', '04:00', '06:00'];
@@ -93,7 +94,6 @@ export function getBarOptions(isMonth = false): EChartOption {
     thisYearListCopy = thisYearListCopy.reverse();
   }
   return {
-    color: CHART_LIST_COLOR,
     tooltip: {
       trigger: 'item',
     },
@@ -151,15 +151,6 @@ export function getBarOptions(isMonth = false): EChartOption {
         type: 'bar',
         barWidth: '30%',
         data: thisYearListCopy,
-        itemStyle: {
-          // color: (param) => {
-          //   // console.log('chartListColor', CHART_LIST_COLOR);
-          //   if (params.value >= 200) {
-          //     return '#E34D59';
-          //   }
-          //   return '#0052D9';
-          // },
-        },
       },
     ],
   };

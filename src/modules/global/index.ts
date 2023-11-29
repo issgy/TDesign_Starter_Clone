@@ -39,7 +39,7 @@ const initialState: IGlobalState = {
   showHeader: true,
   showBreadcrumbs: false,
   showFooter: true,
-  chartColors: CHART_COLORS['light'],
+  chartColors: CHART_COLORS.light,
 };
 
 // createSlice 是 Redux Toolkit 中的一个函数，用于快速创建 Redux reducer 和相关的 action creators。

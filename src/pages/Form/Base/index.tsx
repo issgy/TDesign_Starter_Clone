@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PageBox from 'components/PageBox';
 import {
   Form,
   Row,
@@ -16,6 +15,7 @@ import {
 } from 'tdesign-react';
 
 import Style from './index.module.less';
+import CommonStyle from 'styles/common.module.less';
 
 const { FormItem } = Form;
 const { Option } = Select;
@@ -35,7 +35,7 @@ export default React.memo(() => {
     MessagePlugin.info(`文件${file.name}上传失败`);
   };
   return (
-    <PageBox withPadding={false} withColor>
+    <div className={CommonStyle.pageWithColor}>
       <div className={Style.formContainer}>
         <Form onSubmit={onSubmit} onReset={onReset} className={Style.baseForm} labelWidth={100} labelAlign={labelAlign}>
           <div>
@@ -133,6 +133,6 @@ export default React.memo(() => {
           </FormItem>
         </Form>
       </div>
-    </PageBox>
+    </div>
   );
 });

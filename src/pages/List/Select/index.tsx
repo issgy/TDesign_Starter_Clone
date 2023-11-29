@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import classnames from 'classnames';
 import { Table, Dialog, Button } from 'tdesign-react';
-import PageBox from 'components/PageBox';
 import SearchForm from './components/SearchForm';
 import { useAppDispatch, useAppSelector } from 'modules/store';
 import { selectListSelect, getList, clearPageState } from 'modules/list/select';
 import { ContractTypeMap, PaymentTypeMap, StatusMap } from '../Base/index';
+import CommonStyle from 'styles/common.module.less';
 
 import './index.module.less';
 
@@ -164,8 +165,8 @@ export const SelectTable = () => {
 };
 
 const selectPage: React.FC = () => (
-  <PageBox withColor withPadding>
+  <div className={classnames(CommonStyle.pageWithPadding, CommonStyle.pageWithColor)}>
     <SelectTable />
-  </PageBox>
+  </div>
 );
 export default React.memo(selectPage);
