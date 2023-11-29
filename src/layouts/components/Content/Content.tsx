@@ -11,8 +11,8 @@ const { Content } = Layout;
 // 定义一个TRenderRoutes类型，它是一个函数类型，接收参数 routes、parentPath、breadcrumb，返回值为React.ReactNode[]
 type TRenderRoutes = (routes: IRouter[], parentPath?: string, breadcrumb?: string[]) => React.ReactNode[];
 
-const renderRoutes: TRenderRoutes = (routes: IRouter[], parentPath = '', breadcrumb = []) => {
-  return routes.map((route, index: number) => {
+const renderRoutes: TRenderRoutes = (routes: IRouter[], parentPath = '', breadcrumb = []) =>
+  routes.map((route, index: number) => {
     const { Component, children, redirect, meta } = route;
     const currentPath = resolve(parentPath, route.path);
     let currentBreadcrumb = breadcrumb;
@@ -47,7 +47,6 @@ const renderRoutes: TRenderRoutes = (routes: IRouter[], parentPath = '', breadcr
     }
     return null;
   });
-};
 export default memo(() => (
   <Content>
     <Suspense
