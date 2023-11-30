@@ -5,6 +5,7 @@ import global from './global';
 import user from './user';
 import listBase from './list/base';
 import listSelect from './list/select';
+import listCard from './list/card';
 
 // 使用combineReducers函数将多个reducer组合成一个单一的reducer
 const reducer = combineReducers({
@@ -12,6 +13,7 @@ const reducer = combineReducers({
   user,
   listBase,
   listSelect,
+  listCard,
 });
 
 // 使用configureStore函数来定义一个Redux Store
