@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from 'modules/store';
-import { CHART_COLORS, defaultColor } from 'configs/color';
+import { CHART_COLORS, defaultColor, colorMap } from 'configs/color';
 import { ETheme } from 'types/index.d';
 
 const namespace = 'global';
@@ -62,7 +62,7 @@ const globalSlice = createSlice({
       state.setting = !state.setting;
     },
     switchTheme: (state, action: PayloadAction<ETheme>) => {
-      let finalTheme = action?.payload;
+      const finalTheme = action?.payload;
       // 切换 chart 颜色
       state.chartColors = CHART_COLORS[finalTheme];
       // 切换主题颜色
@@ -83,7 +83,8 @@ const globalSlice = createSlice({
     switchColor: (state, action) => {
       if (action?.payload) {
         state.color = action?.payload;
-        document.documentElement.style.setProperty('--td-brand-color', action?.payload);
+        let colorType = colorMap?.[action?.payload];
+        document.documentElement.style.setProperty('--td-brand-color', colorType || '');
       }
     },
     switchLayout: (state, action) => {
