@@ -36,7 +36,7 @@ export default memo((props: IHeaderProps) => {
   }
 
   return (
-    <Header className={Style.headerPanel} style={{ height: '64px', lineHeight: '64px' }}>
+    <Header className={Style.headerPanel}>
       <Row justify='space-between'>
         <Col>{HeaderLeft}</Col>
         <Col>

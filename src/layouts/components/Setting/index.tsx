@@ -2,10 +2,13 @@ import React from 'react';
 import { Row, Col, Switch } from 'tdesign-react';
 import RadioRect from './RadioRect';
 import RadioColor from './RadioColor';
-import { Dark, Light, System } from './Icons';
+import Light from 'assets/svg/assets-setting-light.svg?component';
+import Dark from 'assets/svg/assets-setting-dark.svg?component';
+import System from 'assets/svg/assets-setting-auto.svg?component';
 import { useAppDispatch, useAppSelector } from 'modules/store';
 import {
   switchTheme,
+  openSystemTheme,
   switchColor,
   switchLayout,
   selectGlobal,
@@ -18,20 +21,24 @@ import { ETheme } from 'types/index.d';
 
 import Style from './index.module.less';
 
+export enum ESettingTheme {
+  system,
+}
+
 const themeList = [
   {
     value: ETheme.light,
-    image: Light,
+    image: <Light />,
     name: '明亮',
   },
   {
     value: ETheme.dark,
-    image: Dark,
+    image: <Dark />,
     name: '黑暗',
   },
   {
-    // value: ETheme.auto,
-    image: System,
+    value: ESettingTheme.system,
+    image: <System />,
     name: '跟随系统',
   },
 ];
@@ -54,12 +61,19 @@ export default React.memo(() => {
   const dispatch = useAppDispatch();
   const globalState = useAppSelector(selectGlobal);
 
+  const handleThemeSwitch = (value: any) => {
+    if (value === ESettingTheme.system) {
+      dispatch(openSystemTheme());
+    } else {
+      dispatch(switchTheme(value));
+    }
+  };
   return (
     <div>
       <div className={Style.settingTitle}>主题模式</div>
       <RadioRect
-        defaultValue={globalState.theme}
-        onChange={(value) => dispatch(switchTheme(value as ETheme))}
+        defaultValue={globalState.systemTheme ? ESettingTheme.system : globalState.theme}
+        onChange={handleThemeSwitch}
         options={themeList}
       />
 

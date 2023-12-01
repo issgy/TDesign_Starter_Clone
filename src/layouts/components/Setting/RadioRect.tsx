@@ -3,14 +3,15 @@ import classnames from 'classnames';
 import Style from './index.module.less';
 import { ETheme } from 'types/index.d';
 import { ELayout } from 'modules/global';
+import { ESettingTheme } from './index';
 
 interface IOption {
-  value?: ETheme | ELayout;
+  value?: ETheme | ELayout | ESettingTheme;
   image: JSX.Element | string;
   name?: string;
 }
 interface IProps {
-  defaultValue?: number | string;
+  defaultValue?: number | string | boolean;
   onChange: (value?: number | string) => void;
   options: IOption[];
 }

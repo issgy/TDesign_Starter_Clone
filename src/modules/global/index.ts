@@ -21,6 +21,7 @@ export interface IGlobalState {
   color: string;
   setting: boolean;
   theme: ETheme;
+  systemTheme: boolean;
   showHeader: boolean;
   showBreadcrumbs: boolean;
   showFooter: boolean;
@@ -36,6 +37,7 @@ const initialState: IGlobalState = {
   color: defaultColor?.[0],
   setting: false,
   theme: ETheme.light,
+  systemTheme: false,
   showHeader: true,
   showBreadcrumbs: true,
   showFooter: true,
@@ -61,18 +63,22 @@ const globalSlice = createSlice({
     },
     switchTheme: (state, action: PayloadAction<ETheme>) => {
       let finalTheme = action?.payload;
-      if (!finalTheme) {
-        // 跟随系统
-        const media = window.matchMedia('(prefers-color-scheme:dark)');
-        if (media.matches) {
-          finalTheme = media.matches ? ETheme.dark : ETheme.light;
-        }
-      }
       // 切换 chart 颜色
       state.chartColors = CHART_COLORS[finalTheme];
       // 切换主题颜色
       state.theme = finalTheme;
       document.documentElement.setAttribute('theme-mode', finalTheme);
+    },
+    openSystemTheme: (state) => {
+      // 跟随系统  表示匹配用户系统设置的首选颜色模式是否为暗黑模式
+      const media = window.matchMedia('(prefers-color-scheme:dark)');
+      if (media.matches) {
+        const finalTheme = media.matches ? ETheme.dark : ETheme.light;
+        state.chartColors = CHART_COLORS[finalTheme];
+        state.theme = finalTheme;
+        state.systemTheme = true;
+        document.documentElement.setAttribute('theme-mode', finalTheme);
+      }
     },
     switchColor: (state, action) => {
       if (action?.payload) {
@@ -107,6 +113,7 @@ export const {
   toggleMenu,
   toggleSetting,
   switchTheme,
+  openSystemTheme,
   switchColor,
   switchLayout,
   switchFullPage,
